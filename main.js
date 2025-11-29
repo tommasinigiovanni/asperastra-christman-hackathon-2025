@@ -22,7 +22,7 @@ class HackathonPresenter {
         // Flags
         this.isPlaying = false;
         this.isInitialized = false;
-        this.hasStarted = false; // Nuovo flag per lo splash screen
+        this.hasStarted = false; 
     }
 
     /**
@@ -59,14 +59,42 @@ class HackathonPresenter {
         // Start Christmas Snow IMMEDIATELY ❄️
         this.animation.letItSnow();
         
-        // Ripristina stato salvato se presente (ma non inizia ancora)
-        if (this.state.getStep() > 0) {
-            // Se c'è uno stato precedente, forse vogliamo saltare lo splash?
-            // Per ora manteniamo il flusso: Splash -> Mic -> Ripristino/Inizio
-        }
+        // Permetti di iniziare premendo INVIO dallo splash screen
+        const splashScreen = document.getElementById('splash-screen');
+        document.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !this.hasStarted) {
+                this.startApp();
+                this.playScene(); // Avvia anche il primo messaggio se è Enter
+            }
+        });
 
         this.isInitialized = true;
         console.log('Hackathon Presenter ready - Script:', this.script.length, 'scenes');
+    }
+
+    /**
+     * Avvia l'applicazione (Transizione visuale Splash -> Chat)
+     */
+    startApp() {
+        if (this.hasStarted) return;
+        this.hasStarted = true;
+
+        const splashScreen = document.getElementById('splash-screen');
+        if (splashScreen) {
+            splashScreen.style.opacity = '0';
+            setTimeout(() => {
+                splashScreen.style.display = 'none';
+            }, 800);
+        }
+
+        if (this.chatContainer) {
+            this.chatContainer.style.opacity = '1';
+        }
+
+        // Check restore solo se non stiamo già giocando
+        if (this.state.getStep() > 0 && !this.isPlaying) {
+            this.showRestoreDialog();
+        }
     }
 
     /**
@@ -266,6 +294,11 @@ class HackathonPresenter {
      * Toggle Voice Input Mode
      */
     toggleVoiceInput() {
+        // Se è il primo avvio, rimuovi lo splash screen
+        if (!this.hasStarted) {
+            this.startApp();
+        }
+
         this.isRecording = !this.isRecording;
         
         if (this.isRecording) {
@@ -302,25 +335,11 @@ class HackathonPresenter {
             return;
         }
         
-        // --- GESTIONE SPLASH SCREEN ---
-        // Se è la prima volta che avviamo una scena e lo splash screen è visibile, nascondilo
+        // Auto-start se chiamato da altre fonti (es. keyboard)
         if (!this.hasStarted) {
-            const splashScreen = document.getElementById('splash-screen');
-            if (splashScreen) {
-                splashScreen.style.opacity = '0';
-                setTimeout(() => {
-                    splashScreen.style.display = 'none';
-                }, 800); // Aspetta la transizione CSS
-            }
-            this.hasStarted = true;
-
-            // Controllo ripristino stato SOLO ORA
-             if (this.state.getStep() > 0) {
-                this.showRestoreDialog();
-                return; // Aspetta risposta dialog
-            }
+            this.startApp();
         }
-
+        
         const step = this.state.getStep();
         
         if (step >= this.script.length) {
