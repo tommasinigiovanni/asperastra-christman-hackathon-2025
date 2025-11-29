@@ -5,7 +5,7 @@ Tutte le modifiche significative a questo progetto saranno documentate in questo
 Il formato è basato su [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 e questo progetto aderisce a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.0] - 2024-11-29
+## [2.0.0] - 2025-11-29
 
 ### 🎉 Major Release - Complete Refactoring
 
@@ -144,11 +144,11 @@ Refactoring completo dell'applicazione con architettura modulare, accessibilità
 
 ---
 
-## [1.0.0] - 2024-10-19
+## [1.0.0] - 2025-10-19
 
 ### 🎉 Initial Release
 
-Prima release per Hackathon AsperAstra 2024 - Trieste
+Prima release per Hackathon AsperAstra 2025 - Trieste
 
 ### ✨ Added
 
@@ -173,7 +173,7 @@ Prima release per Hackathon AsperAstra 2024 - Trieste
 
 ## [Unreleased]
 
-### 🐛 Fixed (2024-11-29 Session 2)
+### 🐛 Fixed (2025-11-29 Session 2)
 
 **Critical Bugs Fixed:**
 - Fixed module exports not working in browser (window.* namespace)
@@ -217,8 +217,8 @@ Prima release per Hackathon AsperAstra 2024 - Trieste
 
 | Version | Date | Highlights |
 |---------|------|-----------|
-| 2.0.0 | 2024-11-29 | Complete refactoring, modulare, accessibility, testing |
-| 1.0.0 | 2024-10-19 | Initial release per hackathon |
+| 2.0.0 | 2025-11-29 | Complete refactoring, modulare, accessibility, testing |
+| 1.0.0 | 2025-10-19 | Initial release per hackathon |
 
 ---
 

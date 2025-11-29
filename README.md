@@ -743,11 +743,11 @@ MIT License - vedi [LICENSE](LICENSE) file per dettagli.
 
 **Giovanni Tommasini**
 
-Sviluppato per **Hackathon AsperAstra 2024** - Trieste
+Sviluppato per **Hackathon AsperAstra 2025** - Trieste
 
-- 📧 Email: [giovanni@example.com]
-- 🌐 Website: [giovanni-tommasini.dev]
-- 💼 LinkedIn: [giovanni-tommasini]
+- 📧 Email: [tommasini.giovanni@gmail.com]
+- 🌐 Website: [https://giovannitommasini.it]
+- 💼 LinkedIn: [https://www.linkedin.com/in/giovannitommasini/]
 
 ---
 
@@ -762,7 +762,7 @@ Sviluppato per **Hackathon AsperAstra 2024** - Trieste
 
 ## 📌 Changelog
 
-### v2.0.0 (2024-11-29)
+### v2.0.0 (2025-11-29)
 - ✨ Refactoring completo architettura modulare
 - ✨ Animazione typing realistica
 - ✨ Sistema navigazione avanzato
@@ -772,7 +772,7 @@ Sviluppato per **Hackathon AsperAstra 2024** - Trieste
 - ✨ Test coverage >70%
 - ✨ Docker Compose per dev
 
-### v1.0.0 (2024-10-19)
+### v1.0.0 (2025-10-19)
 - 🎉 Release iniziale
 - ✅ Copione base hackathon
 - ✅ Interfaccia ChatGPT style
