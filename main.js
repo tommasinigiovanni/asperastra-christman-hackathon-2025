@@ -37,6 +37,9 @@ class HackathonPresenter {
         this.chatContainer = document.getElementById('chat-container');
         this.inputField = document.getElementById('user-input');
         this.sendButton = document.getElementById('send-btn');
+        this.micButton = document.getElementById('mic-btn');
+        this.voiceWaveform = document.getElementById('voice-waveform');
+        this.isRecording = false;
         
         if (!this.chatContainer || !this.inputField) {
             console.error('Elementi DOM richiesti non trovati');
@@ -175,12 +178,47 @@ class HackathonPresenter {
                 this.showExportDialog();
             }
             
+            // Toggle UI (Hide controls)
+            if (key === 'h' || key === 'H') {
+                e.preventDefault();
+                this.toggleUI();
+            }
+
+            // Numeric shortcuts for buttons (1, 2, 3...)
+            if (key >= '1' && key <= '9') {
+                const index = parseInt(key) - 1;
+                const buttons = document.querySelectorAll('.action-btn');
+                if (buttons && buttons[index]) {
+                    e.preventDefault();
+                    buttons[index].click();
+                }
+            }
+            
             // Toggle Theme
             if (this.config.shortcuts.toggleTheme.includes(key)) {
                 e.preventDefault();
                 this.toggleTheme();
             }
         });
+    }
+
+    /**
+     * Toggle visibility of UI controls
+     */
+    toggleUI() {
+        const controls = document.getElementById('controls-container');
+        const progressBar = document.getElementById('progress-bar');
+        
+        if (controls) {
+            const isHidden = controls.style.opacity === '0';
+            controls.style.opacity = isHidden ? '1' : '0';
+            controls.style.pointerEvents = isHidden ? 'all' : 'none';
+        }
+        
+        if (progressBar) {
+            const isHidden = progressBar.style.opacity === '0';
+            progressBar.style.opacity = isHidden ? '1' : '0';
+        }
     }
 
     /**
@@ -200,6 +238,11 @@ class HackathonPresenter {
             this.playScene();
         });
         
+        // Click su mic button
+        this.micButton?.addEventListener('click', () => {
+            this.toggleVoiceInput();
+        });
+        
         // State change listener
         this.state.on('stepChanged', (step) => {
             this.updateProgress();
@@ -209,6 +252,38 @@ class HackathonPresenter {
         this.state.on('presenterModeChanged', (isActive) => {
             this.updatePresenterUI(isActive);
         });
+    }
+
+    /**
+     * Toggle Voice Input Mode
+     */
+    toggleVoiceInput() {
+        this.isRecording = !this.isRecording;
+        
+        if (this.isRecording) {
+            // START RECORDING
+            this.micButton.classList.add('recording');
+            this.micButton.innerHTML = '⏹'; // Stop icon
+            this.voiceWaveform.style.display = 'flex';
+            this.inputField.style.opacity = '0'; // Nascondi testo ma mantieni layout
+            this.animation.hapticFeedback('medium');
+            
+            // Opzionale: mostra placeholder testo che si sta "dettando"
+            const nextStep = this.script[this.state.getStep()];
+            if (nextStep && nextStep.role === 'user') {
+                 // Simulazione dettatura? Per ora solo onda.
+            }
+        } else {
+            // STOP RECORDING & SEND
+            this.micButton.classList.remove('recording');
+            this.micButton.innerHTML = '🎤';
+            this.voiceWaveform.style.display = 'none';
+            this.inputField.style.opacity = '1';
+            this.animation.hapticFeedback('light');
+            
+            // Invia automaticamente
+            this.playScene();
+        }
     }
 
     /**
@@ -408,6 +483,13 @@ class HackathonPresenter {
         const content = document.getElementById('presenter-notes-content');
         if (content) {
             content.innerHTML = `<p>${notes}</p>`;
+        }
+        
+        // Stealth Teleprompter: mostra note come placeholder input
+        if (this.inputField) {
+            // Rimuovi HTML tags per il placeholder
+            const plainText = notes.replace(/<[^>]*>/g, '');
+            this.inputField.setAttribute('placeholder', `💡 ${plainText}`);
         }
     }
 

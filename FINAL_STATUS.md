@@ -274,7 +274,7 @@ Per problemi o domande:
 
 - Alberto Savoia per metodologia Pretotyping
 - OpenAI per ispirazione UI ChatGPT
-- Asper Astra per opportunità hackathon
+- AsperAstra per opportunità hackathon
 - Community open-source per tool utilizzati
 
 ---

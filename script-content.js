@@ -16,7 +16,7 @@ const SCRIPT = [
     // --- SCENA 1: INTRO ---
     {
         role: 'user',
-        text: "Ciao ChatGPT! 👋 Sono Giovanni. Sono qui all'Hackathon di Asper Astra a Trieste. Devo spiegare a questi startupper come trasformare un'idea in un progetto vincente in 48 ore. Mi aiuti?",
+        text: "Ciao ChatGPT! 👋 Sono Giovanni. Sono qui all'Hackathon di AsperAstra a Trieste. Devo spiegare a questi startupper come trasformare un'idea in un progetto vincente in 48 ore. Mi aiuti?",
         notes: "Apertura energica, coinvolgere subito il pubblico"
     },
     {
@@ -38,91 +38,88 @@ const SCRIPT = [
         notes: "Momento comico - pausa per reazione pubblico"
     },
 
-    // --- SCENA 2: IL PROBLEMA (Indice 3) ---
+    // --- SCENA 2: DEFINIZIONE (A3 Canvas) (Indice 3) ---
     {
         role: 'user',
-        text: "Ok, ora ci siamo! Senti, vedo molti team che stanno già aprendo l'editor di codice per iniziare a sviluppare l'app finale. È la mossa giusta?",
-        notes: "Introduzione al tema centrale: validation"
+        text: "Ok, ora ci siamo! Molti team stanno già aprendo l'editor di codice. È la mossa giusta?",
+        notes: "Introduzione al tema centrale: non correre alla soluzione"
     },
     {
         role: 'ai',
-        text: "ASSOLUTAMENTE NO! 🛑 Ferma tutto!<br>Stanno commettendo l'errore classico: innamorarsi della soluzione prima di aver capito il problema.<br><br>Ricorda la regola d'oro di Alberto Savoia: <b>Pretotipare prima di Prototipare</b>.",
-        notes: "Citare Alberto Savoia - concetto chiave"
-    },
-    {
-        role: 'ai',
-        text: "Se costruiscono subito 'per bene' qualcosa che nessuno vuole, finiranno così:<br><img src='https://media.istockphoto.com/id/1136422297/photo/bored-baby-boy-on-sofa.jpg?s=612x612&w=0&k=20&c=6y9Yl35Hlq6kL7O7jQzX0Q0Q0Q0Q0Q0Q0Q0Q0Q0Q0Q0=' style='max-width: 300px; border-radius: 8px;' alt='Bambino annoiato sul divano'><br><i>'Assicurati di costruire la cosa giusta, prima di costruirla per bene.'</i>",
-        notes: "Enfatizzare il rischio di costruire prodotti non voluti"
+        text: "ASSOLUTAMENTE NO! 🛑 Ferma tutto!<br>Prima di scrivere una riga di codice, devono compilare l'<b>A3 Definition Canvas</b>.<br><br>Chiedi loro:<br>1️⃣ <b>Qual è il Problema?</b> (Funzionale, Emozionale, Latente)<br>2️⃣ <b>Chi è il Cliente?</b> (Audience ristretta, MVA)<br>3️⃣ <b>Chi è la Concorrenza?</b> (Anche le alternative non tecnologiche)",
+        notes: "Focus su A3 Canvas: Problema, Cliente, Concorrenza"
     },
 
-    // --- SCENA 3: LA SOLUZIONE (XYZ Hypothesis) ---
+    // --- SCENA 3: PRETOTYPE (Indice 5) ---
     {
         role: 'user',
-        text: "Ricevuto. Niente codice per ora. Ma come fanno a dimostrare ai giudici che la loro idea funziona senza averla costruita?",
-        notes: "Transizione verso la metodologia pratica"
+        text: "Chiaro. Niente codice finché non abbiamo definito il problema. E poi? Costruiamo il prototipo?",
+        notes: "Transizione verso Pretotyping vs Prototyping"
     },
     {
         role: 'ai',
-        text: "Devono trasformare le opinioni in DATI. 📊<br>Serve l'<b>Ipotesi XYZ</b>.<br><br>La formula è:<br><i>'Almeno il <b>X%</b> di <b>Y</b> farà <b>Z</b>'</i>",
-        notes: "Introduzione XYZ Hypothesis - scrivere formula alla lavagna se possibile"
-    },
-    {
-        role: 'ai',
-        text: "Ecco un esempio concreto:<br>✅ <i>'Almeno il <b>10%</b> (X) dei <b>WISP italiani</b> (Y) mi darà il suo <b>indirizzo email</b> (Z) per saperne di più.'</i><br><br>Devono essere numeri precisi, non 'tanti' o 'forse'.",
-        notes: "Esempio pratico - verificare comprensione pubblico"
+        text: "Nemmeno per sogno! 🚫<br>Ricorda la regola d'oro di Alberto Savoia: <b>Pretotipare prima di Prototipare</b>.<br><br><i>'Assicurati di costruire la cosa giusta, prima di costruirla per bene.'</i><br>Se costruiscono subito 'per bene' qualcosa che nessuno vuole, sprecano tempo prezioso.",
+        notes: "Citare Alberto Savoia - concetto chiave Pretotyping"
     },
 
-    // --- SCENA 4: SKIN IN THE GAME (Fake Door) ---
+    // --- SCENA 4: XYZ HYPOTHESIS (Indice 7) ---
     {
         role: 'user',
-        text: "Ok, chiaro. Ma come raccogliamo questi dati qui, oggi, in poche ore?",
-        notes: "Problema pratico del timing hackathon"
+        text: "Ok, ma come dimostrano che la loro idea funziona senza averla costruita?",
+        notes: "Come validare senza prodotto"
     },
     {
         role: 'ai',
-        text: "Usiamo la tecnica della <b>Porta Finta (Fake Door)</b>. 🚪<br><br>1. Create una Landing Page o un volantino veloce.<br>2. Promettete il servizio come se esistesse già.<br>3. Quando cliccano su 'Compra', chiedete la mail.<br><br>Ottenere una mail o un numero di telefono è <b>Skin in the Game</b>. I 'Mi piace' su Facebook sono solo vanità.",
-        notes: "Fake Door: enfatizzare differenza tra interesse vero e vanity metrics"
+        text: "Devono usare l'<b>Ipotesi XYZ</b> per trasformare opinioni in DATI. 📊<br><br>Formula:<br><i>'Almeno il <b>X%</b> di <b>Y</b> farà <b>Z</b>'</i><br><br>Esempio: <i>'Almeno il 10% dei visitatori del sito lascerà la mail.'</i>",
+        notes: "XYZ Hypothesis: dati concreti, non opinioni"
     },
 
-    // --- SCENA 5: AI TOOLS & PROMPT DESIGN ---
+    // --- SCENA 5: DATA & SENTIMENT (Indice 9) ---
     {
         role: 'user',
-        text: "Il tempo è poco. Possono usare l'AI (cioè te!) per accelerare il lavoro? Hai consigli sui Prompt?",
-        notes: "Transizione verso parte AI/Tech"
+        text: "E se hanno fatto delle interviste? Come analizziamo velocemente i dati qualitativi?",
+        notes: "Introduzione analisi dati con AI"
     },
     {
         role: 'ai',
-        text: "Certo che possono! Ma devono saper chiedere. 🧠<br>Un prompt generico dà risultati generici.<br><br>La struttura per un <b>Prompt Perfetto</b> deve avere 4 elementi:<br>1️⃣ <b>Contesto</b>: Chi sono io? (Es. 'Agisci come un esperto di Marketing')<br>2️⃣ <b>Compito</b>: Cosa devo fare?<br>3️⃣ <b>Istruzioni</b>: Come lo vuoi fatto?<br>4️⃣ <b>Formato</b>: Tabella, codice, lista?",
-        notes: "Framework 4C - dare esempio live se possibile"
-    },
-    {
-        role: 'user',
-        text: "Ottimo. E per il Business Plan? I giudici vorranno vedere i numeri...",
-        notes: "Business aspect - parte finale"
+        text: "Posso farlo io in un attimo! 🧠<br>Dammi le trascrizioni e estrarrò il <b>Sentiment</b> e la <b>Propensione all'acquisto</b>.<br><br>Esempio di mio output:<br><pre style='background:#2d2d3e; padding:10px; border-radius:5px; font-size:0.8em;'>{\n  \"sentiment\": \"Positivo (scetticismo iniziale sul prezzo)\",\n  \"propensione\": \"Alta se integrato con WhatsApp\"\n}</pre>",
+        notes: "Mostrare potenza AI per analisi qualitativa veloce"
     },
 
-    // --- SCENA 6: BUSINESS (Lean Canvas) ---
-    {
-        role: 'ai',
-        text: "Per carità, niente Business Plan da 50 pagine! 📄<br>Qui serve velocità. Usate il <b>Lean Canvas</b>.<br><br>Dite loro di concentrarsi solo su:<br>🔸 <b>Problem</b> (Che dolore risolvi?)<br>🔸 <b>Unique Value Proposition</b> (Perché sei diverso?)<br>🔸 <b>Unfair Advantage</b> (Cosa hai che non possono copiare?)",
-        notes: "Lean Canvas vs Business Plan tradizionale - velocità"
-    },
-    {
-        role: 'ai',
-        text: "Per i costi e i ricavi, posso fare io i calcoli. 🧮<br>Posso generare grafici di break-even in secondi se mi danno i dati grezzi. Sfruttate la mia capacità di Data Analysis!",
-        notes: "Enfatizzare potenza AI per analisi dati"
-    },
-
-    // --- SCENA 7: CONCLUSIONE ---
+    // --- SCENA 6: TOOLS & MVP (Indice 11) ---
     {
         role: 'user',
-        text: "Grazie mille AI. Un ultimo consiglio per i ragazzi di Asper Astra prima di lasciarli lavorare?",
-        notes: "Chiusura - preparare call to action"
+        text: "Wow, utile! Senti, per costruire l'MVP in poche ore, quali strumenti consigli?",
+        notes: "Toolkit per hackathon"
     },
     {
         role: 'ai',
-        text: "⚠️ <b>DISCLAIMER FINALE</b> ⚠️<br>Ricordatevi sempre: io ho letto tutto internet, ma non sono il Vangelo.<br><br>Usate l'AI per l'<b>EFFICIENZA</b>, ma metteteci la vostra <b>AUTENTICITÀ</b> umana.<br>L'AI non sostituisce il vostro ingegno, lo amplifica.<br><br>Ora andate e spaccate tutto! 🚀",
-        notes: "Messaggio finale motivazionale - energia alta!"
+        text: "Ecco il mio <b>Kit di Sopravvivenza No-Code & AI</b>: 🛠️<br><br>🔹 <b>Frontend</b>: Retool, Glide, o anche Notion<br>🔹 <b>Automazioni</b>: Make.com, Zapier, n8n<br>🔹 <b>AI App</b>: Flowise, Voiceflow<br>🔹 <b>Design</b>: MidJourney, DALL-E<br><br>Non reinventate la ruota, assemblatela!",
+        notes: "Elenco tool pratici dal PDF"
+    },
+
+    // --- SCENA 7: PITCH FINALE (Indice 13) ---
+    {
+        role: 'user',
+        text: "Fantastico. Siamo alla fine. Domenica dovranno presentare tutto alla giuria. Consigli per il Pitch?",
+        notes: "Consigli finali per la presentazione"
+    },
+    {
+        role: 'ai',
+        text: "Il Pitch deve essere una storia, non una lista della spesa. 📖<br><br>Struttura vincente:<br>1️⃣ <b>Gancio</b>: Il Problema (fai sentire il dolore)<br>2️⃣ <b>La Soluzione</b>: La vostra magia<br>3️⃣ <b>Demo</b>: Fate vedere che funziona (anche se è un video)<br>4️⃣ <b>Validazione</b>: I dati XYZ che avete raccolto<br>5️⃣ <b>Team</b>: Perché voi?",
+        notes: "Struttura pitch efficace"
+    },
+
+    // --- SCENA 8: CONCLUSIONE (Indice 15) ---
+    {
+        role: 'user',
+        text: "Grazie mille AI. Un ultimo consiglio per i ragazzi di AsperAstra prima di lasciarli lavorare?",
+        notes: "Chiusura motivazionale"
+    },
+    {
+        role: 'ai',
+        text: "⚠️ <b>DISCLAIMER FINALE</b> ⚠️<br>L'AI è potente, ma non sostituisce il vostro ingegno.<br><br><b>Sognate in grande, prototipate con l'AI, ma restate UMANI.</b><br><br>Ora andate e spaccate tutto! 🚀",
+        notes: "Messaggio finale: AI amplifica, non sostituisce"
     }
 ];
 
@@ -133,4 +130,3 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 } else {
     window.SCRIPT = SCRIPT;
 }
-

@@ -585,6 +585,8 @@ app.exportConversation('markdown' | 'text' | 'html' | 'json');
 |-------|--------|
 | **INVIO / SPAZIO / →** | Avanti (next scene) |
 | **←** | Indietro (previous) |
+| **H** | Toggle Stealth Mode (Nascondi UI) |
+| **1-9** | Selezione rapida bottoni |
 | **R** | Reset presentazione |
 | **P** | Toggle Presenter Mode |
 | **E** | Export conversazione |
@@ -739,7 +741,7 @@ MIT License - vedi [LICENSE](LICENSE) file per dettagli.
 
 **Giovanni Tommasini**
 
-Sviluppato per **Hackathon Asper Astra 2024** - Trieste
+Sviluppato per **Hackathon AsperAstra 2024** - Trieste
 
 - 📧 Email: [giovanni@example.com]
 - 🌐 Website: [giovanni-tommasini.dev]
@@ -751,7 +753,7 @@ Sviluppato per **Hackathon Asper Astra 2024** - Trieste
 
 - Alberto Savoia per la metodologia Pretotyping
 - OpenAI per l'ispirazione UI ChatGPT
-- Asper Astra per l'opportunità dell'hackathon
+- AsperAstra per l'opportunità dell'hackathon
 - Community open-source per i tool utilizzati
 
 ---

@@ -21,6 +21,15 @@
     <!-- Input Area -->
     <div class="input-area">
         <div class="input-box">
+            <!-- Waveform Overlay -->
+            <div id="voice-waveform" class="voice-waveform" style="display: none;">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
             <input 
                 type="text" 
                 id="user-input" 
@@ -28,7 +37,8 @@
                 autocomplete="off"
                 aria-label="Campo input messaggio"
             >
-            <button id="send-btn" aria-label="Invia messaggio" title="Invia (Enter)">➤</button>
+            <button id="mic-btn" class="icon-btn" aria-label="Attiva input vocale" title="Attiva Input Vocale">🎤</button>
+            <button id="send-btn" class="icon-btn" aria-label="Invia messaggio" title="Invia (Enter)">➤</button>
         </div>
         <p class="disclaimer">
             <small>Hackathon Mentor AI - Simulazione pre-scripted per presentazioni live</small>

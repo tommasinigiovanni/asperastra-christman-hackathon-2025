@@ -92,6 +92,7 @@ body {
     height: 4px;
     background: var(--color-border);
     z-index: 1000;
+    transition: opacity var(--transition-base) ease;
 }
 
 .progress-fill {
@@ -302,6 +303,7 @@ body {
     gap: var(--spacing-sm);
     align-items: center;
     z-index: 100;
+    transition: opacity var(--transition-base) ease;
 }
 
 .control-btn {
@@ -373,6 +375,7 @@ body {
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
     border: 1px solid var(--color-border);
     transition: box-shadow var(--transition-fast);
+    position: relative;
 }
 
 .input-box:focus-within {
@@ -394,7 +397,8 @@ body {
     color: var(--color-text-secondary);
 }
 
-#send-btn {
+/* Icon Buttons (Send & Mic) */
+.icon-btn {
     background: transparent;
     border: none;
     color: var(--color-text-secondary);
@@ -408,13 +412,60 @@ body {
     min-width: 32px;
 }
 
-#send-btn:hover {
+.icon-btn:hover {
     color: var(--color-text);
     transform: scale(1.1);
 }
 
-#send-btn:active {
+.icon-btn:active {
     transform: scale(0.9);
+}
+
+/* Mic Active State */
+#mic-btn.recording {
+    color: var(--color-error);
+    animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse-red {
+    0% { transform: scale(1); text-shadow: 0 0 0 rgba(239, 68, 68, 0); }
+    50% { transform: scale(1.1); text-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
+    100% { transform: scale(1); text-shadow: 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* Voice Waveform */
+.voice-waveform {
+    position: absolute;
+    left: 16px;
+    right: 90px;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrato o left? Centrato è meglio per l'effetto */
+    gap: 4px;
+    background-color: var(--color-input-bg); /* Copre l'input text */
+    z-index: 5;
+    border-radius: 8px;
+}
+
+.bar {
+    width: 4px;
+    background-color: var(--color-text);
+    border-radius: 2px;
+    animation: wave 1s ease-in-out infinite;
+    height: 10px;
+}
+
+.bar:nth-child(1) { animation-delay: 0.0s; }
+.bar:nth-child(2) { animation-delay: 0.1s; }
+.bar:nth-child(3) { animation-delay: 0.2s; }
+.bar:nth-child(4) { animation-delay: 0.3s; }
+.bar:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes wave {
+    0%, 100% { height: 8px; opacity: 0.5; }
+    50% { height: 24px; opacity: 1; background-color: var(--color-accent); }
 }
 
 .disclaimer {

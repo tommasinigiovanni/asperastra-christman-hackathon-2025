@@ -148,7 +148,7 @@ Refactoring completo dell'applicazione con architettura modulare, accessibilità
 
 ### 🎉 Initial Release
 
-Prima release per Hackathon Asper Astra 2024 - Trieste
+Prima release per Hackathon AsperAstra 2024 - Trieste
 
 ### ✨ Added
 

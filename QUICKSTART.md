@@ -67,7 +67,9 @@ npx http-server -p 8080
 
 - **INVIO** o **Spazio** → Avanza alla scena successiva
 - **Click sui bottoni** → Scegli il percorso narrativo
+- **Tasti 1-9** → Seleziona rapidamente l'opzione corrispondente (1=Prima, 2=Seconda)
 - **←** → Torna indietro (se disponibile)
+- **H** → Nascondi/Mostra interfaccia (Stealth Mode)
 - **R** → Reset presentazione
 - **P** → Attiva/disattiva modalità presentatore
 - **E** → Esporta conversazione
@@ -77,8 +79,14 @@ npx http-server -p 8080
 1. **Premi INVIO** → Appare messaggio utente
 2. **Indicatore "..."** → L'AI sta pensando (1.5 sec)
 3. **Messaggio AI** → Appare con animazione typing
-4. **Bottoni** (quando presenti) → Scegli per proseguire
+4. **Bottoni** (quando presenti) → Scegli per proseguire (Mouse o tasti 1,2)
 5. **Premi INVIO** → Continua se non ci sono bottoni
+
+### Modalità Presentatore Avanzata
+
+- **Note Segrete**: Appaiono come placeholder nell'input box ("💡 Suggerimento...")
+- **Stealth Mode (H)**: Nasconde progress bar e controlli per una proiezione pulita
+- **Presenter Panel (P)**: Apre pannello laterale con note complete e timer
 
 ### Progress Bar
 
