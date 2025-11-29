@@ -76,6 +76,9 @@ class HackathonPresenter {
             controls = document.createElement('div');
             controls.id = 'controls-container';
             controls.className = 'controls-container';
+            // Stealth Mode Default: Start hidden
+            controls.style.opacity = '0';
+            controls.style.pointerEvents = 'none';
             controls.innerHTML = `
                 <button id="btn-prev" class="control-btn" title="Indietro (←)" aria-label="Vai al messaggio precedente">
                     ◄
@@ -121,6 +124,8 @@ class HackathonPresenter {
             progressBar = document.createElement('div');
             progressBar.id = 'progress-bar';
             progressBar.className = 'progress-bar';
+            // Stealth Mode Default: Start hidden
+            progressBar.style.opacity = '0';
             progressBar.innerHTML = `
                 <div class="progress-fill"></div>
                 <div class="progress-text">0/${this.script.length}</div>
@@ -361,6 +366,17 @@ class HackathonPresenter {
             setTimeout(() => {
                 this.animation.playSirenSound();
             }, 7000);
+        } else if (scene.sound === 'applause') {
+            setTimeout(() => {
+                this.animation.playApplauseSound();
+            }, 1000);
+        }
+
+        // Effetti visivi
+        if (scene.effect === 'confetti') {
+            setTimeout(() => {
+                this.animation.confetti(document.body);
+            }, 1000);
         }
         
         // Aggiungi messaggio AI con animazione typing

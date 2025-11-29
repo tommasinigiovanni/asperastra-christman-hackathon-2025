@@ -8,6 +8,8 @@
 
 Un'applicazione **Single Page Application (SPA)** che simula un'interfaccia ChatGPT per presentazioni interattive dal vivo, sviluppata per l'Hackathon **AsperAstra ** (Trieste).
 
+![Hackathon AI Mentor Preview](img/preview.png)
+
 [Caratteristiche](#-caratteristiche-principali) •
 [Quick Start](#-quick-start) •
 [Documentazione](#-documentazione) •

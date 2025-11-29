@@ -146,6 +146,8 @@ const SCRIPT = [
     {
         role: 'ai',
         text: "⚠️ <b>DISCLAIMER FINALE</b> ⚠️<br>L'AI amplifica, ma non crea dal nulla.<br><br><b>Sognate in grande, prototipate con l'AI, ma restate UMANI.</b><br><br>Ora andate e spaccate tutto! 🚀",
+        sound: 'applause',
+        effect: 'confetti',
         notes: "Messaggio finale"
     }
 ];

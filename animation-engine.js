@@ -347,44 +347,107 @@ class AnimationEngine {
     }
 
     /**
+     * Genera suono Applausi usando Web Audio API
+     */
+    playApplauseSound() {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+
+        const ctx = new AudioContext();
+        const duration = 25.0; // Aumentato a 25 secondi
+        const bufferSize = ctx.sampleRate * duration;
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+
+        // Pink Noise generation (approssimazione)
+        let b0, b1, b2, b3, b4, b5, b6;
+        b0 = b1 = b2 = b3 = b4 = b5 = b6 = 0.0;
+        
+        for (let i = 0; i < bufferSize; i++) {
+            const white = Math.random() * 2 - 1;
+            b0 = 0.99886 * b0 + white * 0.0555179;
+            b1 = 0.99332 * b1 + white * 0.0750759;
+            b2 = 0.96900 * b2 + white * 0.1538520;
+            b3 = 0.86650 * b3 + white * 0.3104856;
+            b4 = 0.55000 * b4 + white * 0.5329522;
+            b5 = -0.7616 * b5 - white * 0.0168980;
+            data[i] = b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362;
+            data[i] *= 0.11; // Normalize
+            b6 = white * 0.115926;
+        }
+
+        // Creazione multipla di clap bursts per simulare folla
+        const noise = ctx.createBufferSource();
+        noise.buffer = buffer;
+        
+        // Filtro per togliere alte frequenze troppo aspre
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = 2000;
+        
+        const gain = ctx.createGain();
+        // Fade in/out esteso
+        gain.gain.setValueAtTime(0, ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.5, ctx.currentTime + 0.5);
+        // Mantieni volume alto più a lungo
+        gain.gain.linearRampToValueAtTime(0.5, ctx.currentTime + duration - 5.0); 
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+
+        noise.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+        
+        noise.start();
+    }
+
+    /**
      * Trigger confetti animation (per celebrazioni)
      * @param {HTMLElement} container - Container dove mostrare confetti
      */
     confetti(container) {
         if (this.config.accessibility.reducedMotion) return;
         
-        // Implementazione semplice confetti
-        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
-        const confettiCount = 50;
-        
-        for (let i = 0; i < confettiCount; i++) {
-            const confetto = document.createElement('div');
-            confetto.className = 'confetto';
-            confetto.style.cssText = `
-                position: fixed;
-                width: 10px;
-                height: 10px;
-                background: ${colors[Math.floor(Math.random() * colors.length)]};
-                left: ${Math.random() * 100}%;
-                top: -10px;
-                opacity: 1;
-                pointer-events: none;
-                z-index: 9999;
-            `;
+        // Funzione interna per lanciare una ondata
+        const launchWave = () => {
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+            const confettiCount = 50;
             
-            container.appendChild(confetto);
-            
-            // Anima caduta
-            const animation = confetto.animate([
-                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
-                { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
-            ], {
-                duration: 2000 + Math.random() * 1000,
-                easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-            });
-            
-            animation.onfinish = () => confetto.remove();
-        }
+            for (let i = 0; i < confettiCount; i++) {
+                const confetto = document.createElement('div');
+                confetto.className = 'confetto';
+                confetto.style.cssText = `
+                    position: fixed;
+                    width: 10px;
+                    height: 10px;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    left: ${Math.random() * 100}%;
+                    top: -10px;
+                    opacity: 1;
+                    pointer-events: none;
+                    z-index: 9999;
+                `;
+                
+                container.appendChild(confetto);
+                
+                // Anima caduta
+                const animation = confetto.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+                ], {
+                    duration: 2000 + Math.random() * 1000,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                });
+                
+                animation.onfinish = () => confetto.remove();
+            }
+        };
+
+        // Lancia 5 ondate consecutive
+        launchWave(); // Subito
+        setTimeout(launchWave, 1000);
+        setTimeout(launchWave, 2000);
+        setTimeout(launchWave, 3000);
+        setTimeout(launchWave, 4000);
     }
 }
 
