@@ -347,57 +347,87 @@ class AnimationEngine {
     }
 
     /**
-     * Genera suono Applausi usando Web Audio API
+     * Genera suono Applausi Realistici (Sintesi Granulare)
      */
     playApplauseSound() {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         if (!AudioContext) return;
 
         const ctx = new AudioContext();
-        const duration = 25.0; // Aumentato a 25 secondi
-        const bufferSize = ctx.sampleRate * duration;
-        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-        const data = buffer.getChannelData(0);
+        const duration = 10.0; // Durata richiesta: 10 secondi
 
-        // Pink Noise generation (approssimazione)
-        let b0, b1, b2, b3, b4, b5, b6;
-        b0 = b1 = b2 = b3 = b4 = b5 = b6 = 0.0;
+        // Funzione per creare un singolo "Clap" (battito di mani)
+        const createClap = (time) => {
+            const source = ctx.createBufferSource();
+            const bufferSize = ctx.sampleRate * 0.15; // 150ms max durata clap
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const data = buffer.getChannelData(0);
+
+            // Genera rumore bianco con decay esponenziale rapido (percussivo)
+            for (let i = 0; i < bufferSize; i++) {
+                const decay = Math.exp(-i / (bufferSize * 0.1)); // Decay veloce
+                data[i] = (Math.random() * 2 - 1) * decay;
+            }
+            source.buffer = buffer;
+
+            // Filtro Bandpass per simulare la risonanza delle mani
+            // Frequenza variabile per simulare persone diverse (mani grandi/piccole)
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.value = 800 + Math.random() * 1200; // 800Hz - 2000Hz
+            filter.Q.value = 1.5;
+
+            // Gain Envelope
+            const gain = ctx.createGain();
+            const vol = (0.1 + Math.random() * 0.2); // Volume variabile
+            gain.gain.setValueAtTime(vol, time);
+            gain.gain.exponentialRampToValueAtTime(0.001, time + 0.1);
+
+            // Stereo Panning casuale (se supportato) per effetto spaziale
+            const panner = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+            if (panner) {
+                panner.pan.value = Math.random() * 2 - 1; // Da sinistra a destra
+                source.connect(filter);
+                filter.connect(gain);
+                gain.connect(panner);
+                panner.connect(ctx.destination);
+            } else {
+                source.connect(filter);
+                filter.connect(gain);
+                gain.connect(ctx.destination);
+            }
+
+            source.start(time);
+        };
+
+        // Generazione della folla
+        const now = ctx.currentTime;
+        const end = now + duration;
         
-        for (let i = 0; i < bufferSize; i++) {
-            const white = Math.random() * 2 - 1;
-            b0 = 0.99886 * b0 + white * 0.0555179;
-            b1 = 0.99332 * b1 + white * 0.0750759;
-            b2 = 0.96900 * b2 + white * 0.1538520;
-            b3 = 0.86650 * b3 + white * 0.3104856;
-            b4 = 0.55000 * b4 + white * 0.5329522;
-            b5 = -0.7616 * b5 - white * 0.0168980;
-            data[i] = b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362;
-            data[i] *= 0.11; // Normalize
-            b6 = white * 0.115926;
+        // Loop temporale per schedulare i clap
+        // Densità: inizia piano, cresce, sostiene, finisce piano
+        for (let t = now; t < end; t += 0.03) { // Risoluzione griglia: 30ms
+            // Densità folla in questo momento (0.0 a 1.0)
+            let density = 0;
+            const relativeT = t - now;
+            
+            if (relativeT < 2.0) {
+                density = relativeT / 2.0; // Fade in 2s
+            } else if (relativeT > duration - 2.0) {
+                density = (duration - relativeT) / 2.0; // Fade out 2s
+            } else {
+                density = 1.0; // Full folla
+            }
+
+            // Numero di clap in questo istante (casualità + densità)
+            // Aumenta i clap simultanei per suono più "pieno"
+            const clapsCount = Math.floor(Math.random() * 4 * density); 
+            
+            for (let i = 0; i < clapsCount; i++) {
+                // Micro-variazioni di tempo per non sembrare robotico
+                createClap(t + Math.random() * 0.05);
+            }
         }
-
-        // Creazione multipla di clap bursts per simulare folla
-        const noise = ctx.createBufferSource();
-        noise.buffer = buffer;
-        
-        // Filtro per togliere alte frequenze troppo aspre
-        const filter = ctx.createBiquadFilter();
-        filter.type = 'lowpass';
-        filter.frequency.value = 2000;
-        
-        const gain = ctx.createGain();
-        // Fade in/out esteso
-        gain.gain.setValueAtTime(0, ctx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.5, ctx.currentTime + 0.5);
-        // Mantieni volume alto più a lungo
-        gain.gain.linearRampToValueAtTime(0.5, ctx.currentTime + duration - 5.0); 
-        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
-
-        noise.connect(filter);
-        filter.connect(gain);
-        gain.connect(ctx.destination);
-        
-        noise.start();
     }
 
     /**
