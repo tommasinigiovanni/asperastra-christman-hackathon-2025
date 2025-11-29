@@ -16,12 +16,13 @@ const SCRIPT = [
     // --- SCENA 1: INTRO ---
     {
         role: 'user',
-        text: "Ciao ChatGPT! 👋 Sono Giovanni. Sono qui all'Hackathon di AsperAstra  a Trieste. Devo spiegare a questi startupper come trasformare un'idea in un progetto vincente in 48 ore. Mi aiuti?",
+        text: "Ciao ChatGPT! 👋 Sono Giovanni. Sono qui all'Hackathon di AsperAstra a Trieste. Devo spiegare a questi startupper come trasformare un'idea in un progetto vincente in 48 ore. Mi aiuti?",
         notes: "Apertura energica, coinvolgere subito il pubblico"
     },
     {
         role: 'ai',
-        text: "Ciao Giovanni! Certamente. È un piacere essere qui (virtualmente). 🤖<br><br>Prima di iniziare, dobbiamo calibrare il livello di energia. Guardali negli occhi... come ti sembrano?",
+        text: "Ciao Giovanni! Certamente. È un piacere essere qui (virtualmente). 🤖<br><br>Benvenuti al <b>Christmas Hackathon</b>! 🎄🚀<br>Prima di iniziare, dobbiamo calibrare il livello di energia. Guardali negli occhi... come ti sembrano?",
+        extraContent: "<br><img src='img/asperastra-christmas-hackathon.jpeg' style='max-width: 100%; border-radius: 12px; box-shadow: 0 0 20px rgba(255, 0, 0, 0.3); border: 2px solid #d42426;' alt='AsperAstra Christmas Hackathon'>",
         buttons: [
             { label: "😴 Stanno dormendo", nextIndex: 2 },
             { label: "🤩 Sono carichi a molla", nextIndex: 3 }

@@ -479,6 +479,52 @@ class AnimationEngine {
         setTimeout(launchWave, 3000);
         setTimeout(launchWave, 4000);
     }
+
+    /**
+     * Avvia l'effetto neve natalizia
+     */
+    letItSnow() {
+        if (this.config.accessibility.reducedMotion) return;
+
+        const container = document.body;
+        const snowflakeCount = 50; // Aumento un po' per densità
+
+        for (let i = 0; i < snowflakeCount; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.innerHTML = '❄';
+            
+            // Logica per posizionamento laterale (effetto cornice)
+            // 50% a sinistra (0-25vw), 50% a destra (75-100vw)
+            let startLeft;
+            if (Math.random() > 0.5) {
+                startLeft = Math.random() * 25; // Lato sinistro
+            } else {
+                startLeft = 75 + Math.random() * 25; // Lato destro
+            }
+
+            const duration = 10 + Math.random() * 20; // 10-30s
+            const delay = Math.random() * -30; // Start random
+            const size = 0.8 + Math.random(); // 0.8-1.8em
+            const opacity = 0.2 + Math.random() * 0.4; // Più visibili
+
+            snowflake.style.cssText = `
+                position: fixed;
+                top: -10vh;
+                left: ${startLeft}vw;
+                font-size: ${size}em;
+                opacity: ${opacity};
+                color: #fff;
+                pointer-events: none;
+                z-index: 1000; /* SOPRA a tutto, ma laterale */
+                animation: snowfall ${duration}s linear infinite;
+                animation-delay: ${delay}s;
+                filter: blur(1px);
+                text-shadow: 0 0 5px rgba(255,255,255,0.8);
+            `;
+            
+            container.appendChild(snowflake);
+        }
+    }
 }
 
 // Esporta classe globalmente per il browser

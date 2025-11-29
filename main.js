@@ -64,6 +64,9 @@ class HackathonPresenter {
         
         this.isInitialized = true;
         console.log('Hackathon Presenter ready - Script:', this.script.length, 'scenes');
+        
+        // Start Christmas Snow ❄️
+        this.animation.letItSnow();
     }
 
     /**

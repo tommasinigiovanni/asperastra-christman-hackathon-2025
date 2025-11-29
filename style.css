@@ -25,6 +25,10 @@
     --color-ai-avatar: #10a37f;
     --color-error: #ef4444;
     
+    /* Christmas Colors */
+    --color-santa-red: #d42426;
+    --color-snow-white: #ffffff;
+    
     /* Spacing */
     --spacing-xs: 4px;
     --spacing-sm: 8px;
@@ -40,9 +44,9 @@
     --font-size-xl: 1.25rem;
     
     /* Layout */
-    --content-max-width: 800px;
-    --message-padding-x: 20%;
-    --input-max-width: 60%;
+    --content-max-width: 700px;
+    --message-padding-x: 25%; /* Aumentato padding laterale per stringere il contenuto */
+    --input-max-width: 50%;
     
     /* Timing */
     --transition-fast: 150ms;
@@ -83,13 +87,13 @@ body {
     overflow: hidden;
 }
 
-/* --- PROGRESS BAR --- */
+/* --- PROGRESS BAR (Candy Cane Style) --- */
 .progress-bar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
+    height: 6px;
     background: var(--color-border);
     z-index: 1000;
     transition: opacity var(--transition-base) ease;
@@ -97,20 +101,36 @@ body {
 
 .progress-fill {
     height: 100%;
-    background: var(--color-accent);
+    /* Candy Cane Gradient */
+    background: repeating-linear-gradient(
+        45deg,
+        var(--color-santa-red),
+        var(--color-santa-red) 10px,
+        var(--color-snow-white) 10px,
+        var(--color-snow-white) 20px
+    );
+    background-size: 28px 28px;
+    animation: candy-stripe 2s linear infinite;
     transition: width var(--transition-base) ease;
     width: 0%;
+    box-shadow: 0 0 10px rgba(212, 36, 38, 0.5);
+}
+
+@keyframes candy-stripe {
+    0% { background-position: 0 0; }
+    100% { background-position: 56px 0; }
 }
 
 .progress-text {
     position: absolute;
-    top: 8px;
+    top: 10px;
     right: 16px;
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     background: var(--color-bg);
     padding: 4px 8px;
     border-radius: 4px;
+    border: 1px solid var(--color-border);
 }
 
 /* --- CHAT CONTAINER --- */
@@ -151,6 +171,8 @@ body {
     gap: var(--spacing-md);
     animation: fadeIn var(--transition-base) ease;
     transition: background-color var(--transition-fast);
+    position: relative;
+    z-index: 1;
 }
 
 @keyframes fadeIn {
@@ -177,12 +199,40 @@ body {
     background-color: var(--color-ai-msg);
 }
 
+/* Avatar Wrapper */
+.avatar-wrapper {
+    position: relative;
+}
+
 .avatar {
     width: 36px;
     height: 36px;
     min-width: 36px;
     border-radius: 4px;
     overflow: hidden;
+}
+
+/* Santa Hat for AI Avatar */
+.ai-message .avatar {
+    overflow: visible; /* Permette al cappello di uscire */
+    position: relative;
+}
+
+.ai-message .avatar::after {
+    content: '🎅';
+    position: absolute;
+    top: -18px;
+    right: -12px;
+    font-size: 28px;
+    transform: rotate(15deg);
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
+    animation: hat-bounce 2s infinite ease-in-out;
+    z-index: 10;
+}
+
+@keyframes hat-bounce {
+    0%, 100% { transform: rotate(15deg) translateY(0); }
+    50% { transform: rotate(10deg) translateY(-2px); }
 }
 
 .content {
@@ -495,6 +545,20 @@ body {
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     margin-top: var(--spacing-sm);
+}
+
+/* --- SNOWFALL --- */
+@keyframes snowfall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+.snowflake {
+    user-select: none;
 }
 
 /* --- PRESENTER MODE --- */
