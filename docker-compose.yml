@@ -1,0 +1,47 @@
+services:
+  # Servizio per sviluppo con hot-reload
+  dev:
+    image: nginx:alpine
+    container_name: hackathon-ai-mentor-dev
+    ports:
+      - "8080:80"
+    volumes:
+      # Mount del codice sorgente per hot-reload
+      - ./:/usr/share/nginx/html:ro
+    restart: unless-stopped
+    networks:
+      - hackathon-network
+
+  # Servizio per produzione (build da Dockerfile)
+  prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hackathon-ai-mentor-prod
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+    networks:
+      - hackathon-network
+    profiles:
+      - production
+
+  # Servizio per test E2E (opzionale)
+  test:
+    image: mcr.microsoft.com/playwright:v1.40.0-jammy
+    container_name: hackathon-ai-mentor-test
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: npx playwright test
+    depends_on:
+      - dev
+    networks:
+      - hackathon-network
+    profiles:
+      - testing
+
+networks:
+  hackathon-network:
+    driver: bridge
+

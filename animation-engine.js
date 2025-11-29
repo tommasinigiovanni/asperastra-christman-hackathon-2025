@@ -1,0 +1,355 @@
+/**
+ * Animation Engine
+ * Gestisce animazioni typing, transizioni e effetti visivi
+ */
+
+class AnimationEngine {
+    constructor(config) {
+        this.config = config;
+        this.activeAnimations = new Map();
+        this.animationId = 0;
+    }
+
+    /**
+     * Anima typing carattere per carattere
+     * @param {HTMLElement} element - Elemento DOM dove animare il testo
+     * @param {string} htmlContent - Contenuto HTML da animare
+     * @param {Function} onComplete - Callback al completamento
+     * @param {Function} onProgress - Callback durante l'animazione (opzionale)
+     * @returns {number} - ID dell'animazione (per poterla cancellare)
+     */
+    typeText(element, htmlContent, onComplete, onProgress) {
+        const id = ++this.animationId;
+        
+        // Se animazioni disabilitate, mostra subito tutto
+        if (!this.config.ux.enableTypingAnimation || this.config.accessibility.reducedMotion) {
+            element.innerHTML = htmlContent;
+            if (onComplete) onComplete();
+            return id;
+        }
+
+        // Estrai testo e tag HTML preservando la struttura
+        const { textParts, structure } = this._parseHTML(htmlContent);
+        
+        let currentPartIndex = 0;
+        let currentCharIndex = 0;
+        let html = '';
+        
+        const animate = () => {
+            if (currentPartIndex >= textParts.length) {
+                // Animazione completata - rimuovi cursor e chiama callback
+                element.innerHTML = html;
+                this.activeAnimations.delete(id);
+                if (onComplete) {
+                    setTimeout(() => onComplete(), 10); // Piccolo delay per assicurare DOM update
+                }
+                return;
+            }
+
+            const part = textParts[currentPartIndex];
+            
+            if (part.type === 'tag') {
+                // Aggiungi tag HTML immediatamente
+                html += part.content;
+                currentPartIndex++;
+                currentCharIndex = 0;
+                // IMPORTANTE: Continua immediatamente con la prossima parte
+                animate();
+            } else if (part.type === 'text') {
+                // Anima carattere per carattere
+                if (currentCharIndex < part.content.length) {
+                    const char = part.content[currentCharIndex];
+                    html += char;
+                    currentCharIndex++;
+                    
+                    // Calcola delay per prossimo carattere
+                    let delay = this.config.timing.typingSpeed;
+                    
+                    // Aggiungi variazione casuale per sembrare più umano
+                    delay += Math.random() * this.config.timing.typingSpeedVariation - 
+                             this.config.timing.typingSpeedVariation / 2;
+                    
+                    // Pausa extra su punteggiatura
+                    if (['.', '!', '?', ',', ';', ':'].includes(char)) {
+                        delay += this.config.timing.punctuationPause;
+                    }
+                    
+                    // Aggiorna DOM
+                    element.innerHTML = html + '<span class="typing-cursor">|</span>';
+                    
+                    // Notifica progresso
+                    if (onProgress) {
+                        const totalChars = textParts.reduce((sum, p) => 
+                            sum + (p.type === 'text' ? p.content.length : 0), 0);
+                        const typedChars = textParts.slice(0, currentPartIndex).reduce((sum, p) => 
+                            sum + (p.type === 'text' ? p.content.length : 0), 0) + currentCharIndex;
+                        onProgress(typedChars / totalChars);
+                    }
+                    
+                    this.activeAnimations.set(id, setTimeout(animate, delay));
+                } else {
+                    // Parte completata, vai alla prossima
+                    currentPartIndex++;
+                    currentCharIndex = 0;
+                    // IMPORTANTE: Continua immediatamente con la prossima parte
+                    animate();
+                }
+            }
+        };
+
+        // Avvia animazione
+        animate();
+        return id;
+    }
+
+    /**
+     * Cancella un'animazione in corso
+     * @param {number} id - ID dell'animazione
+     */
+    cancelAnimation(id) {
+        if (this.activeAnimations.has(id)) {
+            clearTimeout(this.activeAnimations.get(id));
+            this.activeAnimations.delete(id);
+        }
+    }
+
+    /**
+     * Cancella tutte le animazioni attive
+     */
+    cancelAllAnimations() {
+        this.activeAnimations.forEach(timeout => clearTimeout(timeout));
+        this.activeAnimations.clear();
+    }
+
+    /**
+     * Completa istantaneamente un'animazione
+     * @param {number} id - ID dell'animazione
+     * @param {HTMLElement} element - Elemento DOM
+     * @param {string} finalContent - Contenuto finale
+     * @param {Function} onComplete - Callback da chiamare
+     */
+    skipAnimation(id, element, finalContent, onComplete) {
+        this.cancelAnimation(id);
+        element.innerHTML = finalContent;
+        
+        // Rimuovi cursor se presente
+        const cursor = element.querySelector('.typing-cursor');
+        if (cursor) cursor.remove();
+        
+        // Chiama callback
+        if (onComplete) {
+            setTimeout(() => onComplete(), 10);
+        }
+    }
+
+    /**
+     * Anima fade-in di un elemento
+     * @param {HTMLElement} element - Elemento da animare
+     * @param {number} duration - Durata in ms (opzionale)
+     */
+    fadeIn(element, duration) {
+        if (this.config.accessibility.reducedMotion) {
+            element.style.opacity = '1';
+            return;
+        }
+
+        const ms = duration || this.config.timing.messageTransitionDelay;
+        element.style.opacity = '0';
+        element.style.transition = `opacity ${ms}ms ease-in`;
+        
+        // Force reflow
+        element.offsetHeight;
+        
+        element.style.opacity = '1';
+    }
+
+    /**
+     * Anima fade-out di un elemento
+     * @param {HTMLElement} element - Elemento da animare
+     * @param {Function} onComplete - Callback al completamento
+     * @param {number} duration - Durata in ms (opzionale)
+     */
+    fadeOut(element, onComplete, duration) {
+        if (this.config.accessibility.reducedMotion) {
+            element.style.opacity = '0';
+            if (onComplete) onComplete();
+            return;
+        }
+
+        const ms = duration || this.config.timing.messageTransitionDelay;
+        element.style.transition = `opacity ${ms}ms ease-out`;
+        element.style.opacity = '0';
+        
+        if (onComplete) {
+            setTimeout(onComplete, ms);
+        }
+    }
+
+    /**
+     * Anima shake (per errori)
+     * @param {HTMLElement} element - Elemento da animare
+     */
+    shake(element) {
+        if (this.config.accessibility.reducedMotion) return;
+
+        element.classList.add('shake-animation');
+        setTimeout(() => {
+            element.classList.remove('shake-animation');
+        }, 500);
+    }
+
+    /**
+     * Anima pulse (per attirare attenzione)
+     * @param {HTMLElement} element - Elemento da animare
+     */
+    pulse(element) {
+        if (this.config.accessibility.reducedMotion) return;
+
+        element.classList.add('pulse-animation');
+        setTimeout(() => {
+            element.classList.remove('pulse-animation');
+        }, 1000);
+    }
+
+    /**
+     * Scroll smooth verso un elemento
+     * @param {HTMLElement} element - Elemento target
+     * @param {HTMLElement} container - Container da scrollare
+     */
+    scrollTo(element, container) {
+        if (!this.config.ux.enableAutoScroll) return;
+
+        const behavior = this.config.accessibility.reducedMotion ? 'auto' : 'smooth';
+        
+        if (container) {
+            container.scrollTo({
+                top: element.offsetTop,
+                behavior: behavior
+            });
+        } else {
+            element.scrollIntoView({
+                behavior: behavior,
+                block: 'end'
+            });
+        }
+    }
+
+    /**
+     * Scroll al bottom di un container
+     * @param {HTMLElement} container - Container da scrollare
+     */
+    scrollToBottom(container) {
+        if (!this.config.ux.enableAutoScroll) return;
+
+        const behavior = this.config.accessibility.reducedMotion ? 'auto' : 'smooth';
+        
+        container.scrollTo({
+            top: container.scrollHeight,
+            behavior: behavior
+        });
+    }
+
+    /**
+     * Parse HTML preservando struttura tag
+     * @private
+     * @param {string} html - HTML da parsare
+     * @returns {Object} - { textParts: Array, structure: Array }
+     */
+    _parseHTML(html) {
+        const textParts = [];
+        const structure = [];
+        const tagRegex = /<[^>]+>/g;
+        let lastIndex = 0;
+        let match;
+
+        while ((match = tagRegex.exec(html)) !== null) {
+            // Testo prima del tag
+            if (match.index > lastIndex) {
+                const text = html.substring(lastIndex, match.index);
+                textParts.push({ type: 'text', content: text });
+            }
+            
+            // Tag HTML
+            textParts.push({ type: 'tag', content: match[0] });
+            structure.push(match[0]);
+            
+            lastIndex = tagRegex.lastIndex;
+        }
+
+        // Testo rimanente dopo l'ultimo tag
+        if (lastIndex < html.length) {
+            const text = html.substring(lastIndex);
+            textParts.push({ type: 'text', content: text });
+        }
+
+        return { textParts, structure };
+    }
+
+    /**
+     * Attiva haptic feedback (vibrazione) su dispositivi mobile
+     * @param {string} type - Tipo di feedback: 'light' | 'medium' | 'heavy'
+     */
+    hapticFeedback(type = 'light') {
+        if (!this.config.ux.enableHaptic) return;
+        
+        // Vibration API
+        if ('vibrate' in navigator) {
+            const patterns = {
+                light: 10,
+                medium: 20,
+                heavy: 50
+            };
+            navigator.vibrate(patterns[type] || 10);
+        }
+    }
+
+    /**
+     * Trigger confetti animation (per celebrazioni)
+     * @param {HTMLElement} container - Container dove mostrare confetti
+     */
+    confetti(container) {
+        if (this.config.accessibility.reducedMotion) return;
+        
+        // Implementazione semplice confetti
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+        const confettiCount = 50;
+        
+        for (let i = 0; i < confettiCount; i++) {
+            const confetto = document.createElement('div');
+            confetto.className = 'confetto';
+            confetto.style.cssText = `
+                position: fixed;
+                width: 10px;
+                height: 10px;
+                background: ${colors[Math.floor(Math.random() * colors.length)]};
+                left: ${Math.random() * 100}%;
+                top: -10px;
+                opacity: 1;
+                pointer-events: none;
+                z-index: 9999;
+            `;
+            
+            container.appendChild(confetto);
+            
+            // Anima caduta
+            const animation = confetto.animate([
+                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+            ], {
+                duration: 2000 + Math.random() * 1000,
+                easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+            });
+            
+            animation.onfinish = () => confetto.remove();
+        }
+    }
+}
+
+// Esporta classe globalmente per il browser
+// (per Node.js/testing usa module.exports)
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports = AnimationEngine;
+} else {
+    window.AnimationEngine = AnimationEngine;
+}
+

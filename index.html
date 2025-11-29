@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Mentor interattivo per presentazioni Hackathon">
+    <meta name="author" content="Giovanni Tommasini">
+    <title>AI Mentor - Hackathon Asper Astra</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Progress Bar (inserita dinamicamente da JS se necessario) -->
+    
+    <!-- Chat Container -->
+    <main id="chat-container" class="chat-container" role="log" aria-label="Conversazione con AI Mentor">
+        <!-- Messaggi inseriti dinamicamente -->
+    </main>
+
+    <!-- Controls Container (inserito dinamicamente da JS) -->
+
+    <!-- Input Area -->
+    <div class="input-area">
+        <div class="input-box">
+            <input 
+                type="text" 
+                id="user-input" 
+                placeholder="Premi INVIO per continuare..." 
+                autocomplete="off"
+                aria-label="Campo input messaggio"
+            >
+            <button id="send-btn" aria-label="Invia messaggio" title="Invia (Enter)">➤</button>
+        </div>
+        <p class="disclaimer">
+            <small>Hackathon Mentor AI - Simulazione pre-scripted per presentazioni live</small>
+        </p>
+    </div>
+
+    <!-- Scripts - Caricamento moduli in ordine -->
+    <script src="config.js"></script>
+    <script src="script-content.js"></script>
+    <script src="state-manager.js"></script>
+    <script src="animation-engine.js"></script>
+    <script src="chat-manager.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
