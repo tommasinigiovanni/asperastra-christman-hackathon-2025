@@ -286,6 +286,49 @@ class AnimationEngine {
     }
 
     /**
+     * Genera suono Sirena Allarme usando Web Audio API
+     */
+    playSirenSound() {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+
+        const ctx = new AudioContext();
+        const now = ctx.currentTime;
+        
+        // Oscillatore principale
+        const osc = ctx.createOscillator();
+        osc.type = 'sawtooth'; // Suono aspro e allarmante
+        
+        // Gain (Volume)
+        const gain = ctx.createGain();
+        gain.gain.setValueAtTime(0.1, now); // Volume iniziale
+        gain.gain.linearRampToValueAtTime(0.1, now + 2.5); // Mantieni volume
+        gain.gain.linearRampToValueAtTime(0, now + 3.0); // Fade out finale
+        
+        // Collegamenti
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        
+        // Automazione Frequenza (Effetto Sirena: Weee-ooo-Weee-ooo)
+        osc.frequency.setValueAtTime(600, now);
+        
+        // Ciclo 1
+        osc.frequency.linearRampToValueAtTime(1200, now + 0.5);
+        osc.frequency.linearRampToValueAtTime(600, now + 1.0);
+        
+        // Ciclo 2
+        osc.frequency.linearRampToValueAtTime(1200, now + 1.5);
+        osc.frequency.linearRampToValueAtTime(600, now + 2.0);
+        
+        // Ciclo 3
+        osc.frequency.linearRampToValueAtTime(1200, now + 2.5);
+        osc.frequency.linearRampToValueAtTime(600, now + 3.0);
+        // Start/Stop
+        osc.start(now);
+        osc.stop(now + 8.0);
+    }
+
+    /**
      * Attiva haptic feedback (vibrazione) su dispositivi mobile
      * @param {string} type - Tipo di feedback: 'light' | 'medium' | 'heavy'
      */

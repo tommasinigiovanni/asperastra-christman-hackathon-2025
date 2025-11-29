@@ -32,10 +32,11 @@ const SCRIPT = [
     // --- RAMO A: SVEGLIA (Indice 2) ---
     {
         role: 'ai',
-        text: "Ahi, male! 📉 Se dormono non innovano. Dì loro che il tempo scorre!<br>Mostra subito questo per svegliarli:",
-        extraContent: "<br><img src='https://i.makeagif.com/media/7-05-2017/SMkjhe.gif' style='max-width: 300px; border-radius: 8px;' alt='Carlo Verdone meme - N che senso'>", 
+        text: "Dormono? 😴 Non esiste. Attivo il protocollo <b>SVEGLIA_IMMEDIATA</b>. ⚡️<br><br>Digli questo:<br><b>'Mentre voi dormite, un'altra AI sta già scrivendo il codice della vostra idea!'</b>",
+        extraContent: "<div style='margin-top: 20px; padding: 20px; background: rgba(239, 68, 68, 0.1); border: 2px solid #ef4444; border-radius: 8px; text-align: center; animation: pulse 1s infinite;'><h2 style='color: #ef4444; margin: 0; font-weight: 800;'>⚠️ SVEGLIA! ⚠️</h2><p style='margin: 10px 0 0 0; font-family: monospace;'>SYSTEM_OVERRIDE: ACTIVE</p></div>", 
         autoNext: 3,
-        notes: "Momento comico - pausa per reazione pubblico"
+        sound: 'glitch',
+        notes: "Urla la frase in grassetto! Fagli paura (per finta)."
     },
 
     // --- SCENA 2: DEFINIZIONE (A3 Canvas) (Indice 3) ---

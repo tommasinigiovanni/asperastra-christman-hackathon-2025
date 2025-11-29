@@ -356,6 +356,13 @@ class HackathonPresenter {
             content += scene.extraContent;
         }
         
+        // Riproduci suono se presente (con delay per sincronizzarsi col testo)
+        if (scene.sound === 'glitch') {
+            setTimeout(() => {
+                this.animation.playSirenSound();
+            }, 7000);
+        }
+        
         // Aggiungi messaggio AI con animazione typing
         const messageEl = this.chat.addMessage(content, 'ai', this.config.ux.enableTypingAnimation, () => {
             // Callback chiamato DOPO che typing è completato
@@ -640,7 +647,7 @@ class HackathonPresenter {
         this.animation.confetti(document.body);
         
         setTimeout(() => {
-            alert('🎉 Presentazione completata! Ottimo lavoro!');
+            // alert('🎉 Presentazione completata! Ottimo lavoro!');
         }, 1000);
     }
 }
