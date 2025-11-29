@@ -6,7 +6,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
 
-Un'applicazione **Single Page Application (SPA)** che simula un'interfaccia ChatGPT per presentazioni interattive dal vivo, sviluppata per l'Hackathon **Asper Astra** (Trieste).
+Un'applicazione **Single Page Application (SPA)** che simula un'interfaccia ChatGPT per presentazioni interattive dal vivo, sviluppata per l'Hackathon **AsperAstra ** (Trieste).
 
 [Caratteristiche](#-caratteristiche-principali) •
 [Quick Start](#-quick-start) •

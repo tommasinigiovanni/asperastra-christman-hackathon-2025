@@ -1,5 +1,5 @@
 /**
- * COPIONE COMPLETO PER HACKATHON ASPER ASTRA
+ * COPIONE COMPLETO PER HACKATHON AsperAstra 
  * Basato sulle slide "Hackathon Festival Tavagnacco" di Giovanni Tommasini
  * 
  * Struttura di ogni scene:
@@ -16,7 +16,7 @@ const SCRIPT = [
     // --- SCENA 1: INTRO ---
     {
         role: 'user',
-        text: "Ciao ChatGPT! 👋 Sono Giovanni. Sono qui all'Hackathon di AsperAstra a Trieste. Devo spiegare a questi startupper come trasformare un'idea in un progetto vincente in 48 ore. Mi aiuti?",
+        text: "Ciao ChatGPT! 👋 Sono Giovanni. Sono qui all'Hackathon di AsperAstra  a Trieste. Devo spiegare a questi startupper come trasformare un'idea in un progetto vincente in 48 ore. Mi aiuti?",
         notes: "Apertura energica, coinvolgere subito il pubblico"
     },
     {
@@ -46,8 +46,9 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "ASSOLUTAMENTE NO! 🛑 Ferma tutto!<br>Prima di scrivere una riga di codice, devono compilare l'<b>A3 Definition Canvas</b>.<br><br>Chiedi loro:<br>1️⃣ <b>Qual è il Problema?</b> (Funzionale, Emozionale, Latente)<br>2️⃣ <b>Chi è il Cliente?</b> (Audience ristretta, MVA)<br>3️⃣ <b>Chi è la Concorrenza?</b> (Anche le alternative non tecnologiche)",
-        notes: "Focus su A3 Canvas: Problema, Cliente, Concorrenza"
+        text: "ASSOLUTAMENTE NO! 🛑 Ferma tutto!<br>Prima di scrivere una riga di codice, devono compilare l'<b>A3 Definition Canvas</b>.<br><br>Serve per capire se stanno risolvendo il problema giusto.",
+        extraContent: "<br><img src='img/A3.png' style='max-width: 100%; border-radius: 8px; border: 1px solid #444;' alt='A3 Definition Canvas'>",
+        notes: "Mostrare A3 Canvas: Problema, Cliente, Concorrenza"
     },
 
     // --- SCENA 3: PRETOTYPE (Indice 5) ---
@@ -82,7 +83,7 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "Posso farlo io in un attimo! 🧠<br>Dammi le trascrizioni e estrarrò il <b>Sentiment</b> e la <b>Propensione all'acquisto</b>.<br><br>Esempio di mio output:<br><pre style='background:#2d2d3e; padding:10px; border-radius:5px; font-size:0.8em;'>{\n  \"sentiment\": \"Positivo (scetticismo iniziale sul prezzo)\",\n  \"propensione\": \"Alta se integrato con WhatsApp\"\n}</pre>",
+        text: "Posso farlo io in un attimo! 🧠<br>Dammi le trascrizioni e estrarrò il <b>Sentiment</b> e la <b>Propensione all'acquisto</b>.<br><br>Esempio di mio output:<br><pre style='background:#2d2d3e; padding:10px; border-radius:5px; font-size:0.8em;'>{\n  \"sentiment\": \"Positivo (scetticismo iniziale)\",\n  \"propensione\": \"Alta se integrato con WhatsApp\"\n}</pre>",
         notes: "Mostrare potenza AI per analisi qualitativa veloce"
     },
 
@@ -98,7 +99,32 @@ const SCRIPT = [
         notes: "Elenco tool pratici dal PDF"
     },
 
-    // --- SCENA 7: PITCH FINALE (Indice 13) ---
+    // --- SCENA 7: LEAN CANVAS (Indice 13) ---
+    {
+        role: 'user',
+        text: "E per il Business Model? Devono scrivere un Business Plan da 50 pagine?",
+        notes: "Introduzione Lean Canvas"
+    },
+    {
+        role: 'ai',
+        text: "Per carità! 😱 Qui serve velocità.<br>Usate il <b>Lean Canvas</b>. È una mappa in una sola pagina per decostruire l'idea.",
+        extraContent: "<br><img src='img/lean-canvas.png' style='max-width: 100%; border-radius: 8px; border: 1px solid #444;' alt='Lean Canvas'>",
+        notes: "Spiegare Lean Canvas: veloce e iterativo"
+    },
+
+    // --- SCENA 8: MANTRA & MINDSET (Indice 15) ---
+    {
+        role: 'user',
+        text: "Tutto chiarissimo. Ma c'è una filosofia, un mantra che devono tenere a mente per non bloccarsi?",
+        notes: "Mindset Hackathon - Mantra"
+    },
+    {
+        role: 'ai',
+        text: "Assolutamente sì. Stampatevelo in testa: 🧠<br><br>✨ <b>Good enough for now, safe enough to try</b><br>✨ <b>Fatto è meglio che perfetto</b><br>✨ <b>Fallite il prima possibile</b> (per imparare subito)<br><br>Non cercate la perfezione oggi. Cercate l'apprendimento.",
+        notes: "Mantra fondamentale: Fail Fast, Learn Faster"
+    },
+
+    // --- SCENA 9: PITCH FINALE (Indice 17) ---
     {
         role: 'user',
         text: "Fantastico. Siamo alla fine. Domenica dovranno presentare tutto alla giuria. Consigli per il Pitch?",
@@ -106,20 +132,20 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "Il Pitch deve essere una storia, non una lista della spesa. 📖<br><br>Struttura vincente:<br>1️⃣ <b>Gancio</b>: Il Problema (fai sentire il dolore)<br>2️⃣ <b>La Soluzione</b>: La vostra magia<br>3️⃣ <b>Demo</b>: Fate vedere che funziona (anche se è un video)<br>4️⃣ <b>Validazione</b>: I dati XYZ che avete raccolto<br>5️⃣ <b>Team</b>: Perché voi?",
+        text: "Il Pitch deve essere una storia. 📖<br><br>1️⃣ <b>Gancio</b>: Il Problema (fate sentire il dolore)<br>2️⃣ <b>Soluzione</b>: La vostra magia<br>3️⃣ <b>Demo</b>: Fate vedere che funziona<br>4️⃣ <b>Validazione</b>: I dati che avete raccolto<br>5️⃣ <b>Team</b>: Perché voi?",
         notes: "Struttura pitch efficace"
     },
 
-    // --- SCENA 8: CONCLUSIONE (Indice 15) ---
+    // --- SCENA 10: CONCLUSIONE (Indice 19) ---
     {
         role: 'user',
-        text: "Grazie mille AI. Un ultimo consiglio per i ragazzi di AsperAstra prima di lasciarli lavorare?",
+        text: "Grazie mille AI. Un ultimo saluto per i ragazzi di AsperAstra ?",
         notes: "Chiusura motivazionale"
     },
     {
         role: 'ai',
-        text: "⚠️ <b>DISCLAIMER FINALE</b> ⚠️<br>L'AI è potente, ma non sostituisce il vostro ingegno.<br><br><b>Sognate in grande, prototipate con l'AI, ma restate UMANI.</b><br><br>Ora andate e spaccate tutto! 🚀",
-        notes: "Messaggio finale: AI amplifica, non sostituisce"
+        text: "⚠️ <b>DISCLAIMER FINALE</b> ⚠️<br>L'AI amplifica, ma non crea dal nulla.<br><br><b>Sognate in grande, prototipate con l'AI, ma restate UMANI.</b><br><br>Ora andate e spaccate tutto! 🚀",
+        notes: "Messaggio finale"
     }
 ];
 

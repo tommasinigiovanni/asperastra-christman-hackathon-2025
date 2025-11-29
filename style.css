@@ -191,12 +191,33 @@ body {
     word-wrap: break-word;
 }
 
+/* Stile migliorato per immagini */
 .content img {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
-    margin-top: var(--spacing-sm);
+    margin-top: var(--spacing-md);
     display: block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform var(--transition-fast);
+}
+
+.content img:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+/* Stile per blocchi di codice/JSON */
+.content pre {
+    background-color: #000000 !important; /* Override inline style */
+    border: 1px solid var(--color-border);
+    padding: var(--spacing-md) !important;
+    border-radius: 6px !important;
+    overflow-x: auto;
+    margin-top: var(--spacing-sm);
+    font-family: 'Consolas', 'Monaco', monospace;
+    color: #dcdcaa;
 }
 
 /* Typing Cursor */
@@ -205,6 +226,7 @@ body {
     animation: blink 1s infinite;
     margin-left: 2px;
     font-weight: bold;
+    color: var(--color-accent);
 }
 
 @keyframes blink {
