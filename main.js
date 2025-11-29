@@ -22,6 +22,7 @@ class HackathonPresenter {
         // Flags
         this.isPlaying = false;
         this.isInitialized = false;
+        this.hasStarted = false; // Nuovo flag per lo splash screen
     }
 
     /**
@@ -49,24 +50,23 @@ class HackathonPresenter {
         // Inizializza chat manager
         this.chat.init(this.chatContainer);
         
-        // Setup UI controls
+        // Setup UI
         this.setupControls();
         this.setupProgressBar();
         this.setupKeyboardShortcuts();
-        
-        // Setup event listeners
         this.setupEventListeners();
         
-        // Ripristina stato salvato o inizia da zero
-        if (this.state.getStep() > 0) {
-            this.showRestoreDialog();
-        }
+        // Start Christmas Snow IMMEDIATELY ❄️
+        this.animation.letItSnow();
         
+        // Ripristina stato salvato se presente (ma non inizia ancora)
+        if (this.state.getStep() > 0) {
+            // Se c'è uno stato precedente, forse vogliamo saltare lo splash?
+            // Per ora manteniamo il flusso: Splash -> Mic -> Ripristino/Inizio
+        }
+
         this.isInitialized = true;
         console.log('Hackathon Presenter ready - Script:', this.script.length, 'scenes');
-        
-        // Start Christmas Snow ❄️
-        this.animation.letItSnow();
     }
 
     /**
@@ -302,6 +302,25 @@ class HackathonPresenter {
             return;
         }
         
+        // --- GESTIONE SPLASH SCREEN ---
+        // Se è la prima volta che avviamo una scena e lo splash screen è visibile, nascondilo
+        if (!this.hasStarted) {
+            const splashScreen = document.getElementById('splash-screen');
+            if (splashScreen) {
+                splashScreen.style.opacity = '0';
+                setTimeout(() => {
+                    splashScreen.style.display = 'none';
+                }, 800); // Aspetta la transizione CSS
+            }
+            this.hasStarted = true;
+
+            // Controllo ripristino stato SOLO ORA
+             if (this.state.getStep() > 0) {
+                this.showRestoreDialog();
+                return; // Aspetta risposta dialog
+            }
+        }
+
         const step = this.state.getStep();
         
         if (step >= this.script.length) {
@@ -366,6 +385,10 @@ class HackathonPresenter {
         
         // Riproduci suono se presente (con delay per sincronizzarsi col testo)
         if (scene.sound === 'glitch') {
+            setTimeout(() => {
+                this.animation.playSirenSound();
+            }, 7000);
+        } else if (scene.sound === 'siren') {
             setTimeout(() => {
                 this.animation.playSirenSound();
             }, 7000);
@@ -445,6 +468,9 @@ class HackathonPresenter {
             this.isPlaying = false;
             this.animation.hapticFeedback('heavy');
             console.log('Presentazione resettata');
+            
+            // Ricarica la pagina per mostrare di nuovo lo splash screen
+            location.reload();
         }
     }
 
@@ -647,6 +673,11 @@ class HackathonPresenter {
     showRestoreDialog() {
         if (!confirm('Trovato stato salvato. Vuoi riprendere da dove avevi lasciato?')) {
             this.state.clearState();
+            // Se pulisce lo stato, inizia da capo
+            this.playScene();
+        } else {
+             // Se ripristina, assicurati che l'UI sia aggiornata
+             // (potrebbe servire ricostruire la chat history qui in futuro)
         }
     }
 
@@ -685,4 +716,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Esponi globalmente per debug
     window.presenter = app;
 });
-

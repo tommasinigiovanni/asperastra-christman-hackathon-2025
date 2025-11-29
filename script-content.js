@@ -22,7 +22,6 @@ const SCRIPT = [
     {
         role: 'ai',
         text: "Ciao Giovanni! Certamente. È un piacere essere qui (virtualmente). 🤖<br><br>Benvenuti al <b>Christmas Hackathon</b>! 🎄🚀<br>Prima di iniziare, dobbiamo calibrare il livello di energia. Guardali negli occhi... come ti sembrano?",
-        extraContent: "<br><img src='img/asperastra-christmas-hackathon.jpeg' style='max-width: 100%; border-radius: 12px; box-shadow: 0 0 20px rgba(255, 0, 0, 0.3); border: 2px solid #d42426;' alt='AsperAstra Christmas Hackathon'>",
         buttons: [
             { label: "😴 Stanno dormendo", nextIndex: 2 },
             { label: "🤩 Sono carichi a molla", nextIndex: 3 }
