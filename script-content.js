@@ -16,16 +16,17 @@ const SCRIPT = [
     // --- SCENA 1: INTRO ---
     {
         role: 'user',
-        text: "Ciao AstraGPT! Sono qui all'Hackathon. Devo spiegare a questi startupper come trasformare un'idea in un progetto vincente in 48 ore. Mi aiuti?",
+        text: "Ciao AstraGPT! Sono qui all'Hackathon. Devo aiutare i team a trasformare un'idea in un progetto vincente in 48 ore. Mi aiuti?",
         notes: "Apertura energica, coinvolgere subito il pubblico"
     },
     {
         role: 'ai',
-        text: "Ciao Giovanni! Certamente. È un piacere essere qui (virtualmente). 🤖<br><br>Benvenuti al <b>Christmas Hackathon</b>! 🎄🚀<br>Prima di iniziare, dobbiamo calibrare il livello di energia. Guardali negli occhi... come ti sembrano?",
+        text: "Ciao Giovanni! Certamente. È un piacere essere qui (virtualmente). Sono <b>AstraGPT</b>, il vostro co-pilot per le prossime 48 ore. 🤖<br><br>Benvenuti al <b>Christmas Hackathon</b>! 🎄🚀<br>Prima di iniziare, dobbiamo calibrare il livello di energia. Guardali negli occhi... come ti sembrano?",
         buttons: [
             { label: "😴 Stanno dormendo", nextIndex: 2 },
             { label: "🤩 Sono carichi a molla", nextIndex: 3 }
         ],
+        sound: 'startup',
         notes: "Interazione con il pubblico - valutare energia sala"
     },
 
@@ -49,6 +50,7 @@ const SCRIPT = [
         role: 'ai',
         text: "ASSOLUTAMENTE NO! 🛑 Ferma tutto!<br>Prima di scrivere una riga di codice, devono compilare l'<b>A3 Definition Canvas</b>.<br><br>Serve per capire se stanno risolvendo il problema giusto.<br>Focalizzatevi su: Problema, Cliente, Concorrenza. 10 minuti, via.",
         extraContent: "<br><img src='img/A3.png' style='max-width: 100%; border-radius: 8px; border: 1px solid #444;' alt='A3 Definition Canvas'>",
+        effect: 'highlight',
         notes: "Mostrare A3 Canvas: Problema, Cliente, Concorrenza"
     },
 
@@ -60,7 +62,7 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "Nemmeno per sogno! 🚫<br>Ricorda la regola d'oro di Alberto Savoia: <b>Pretotipare prima di Prototipare</b>.<br><br><i>'Assicurati di costruire la cosa giusta, prima di costruirla per bene.'</i><br>Se costruiscono subito 'per bene' qualcosa che nessuno vuole, sprecano tempo prezioso.<br>Esempi lampo: landing con waitlist, video-demo finto, concierge via chat.",
+        text: "Nemmeno per sogno! 🚫<br>Ricorda la regola d'oro di Alberto Savoia: <b>Pretotipare prima di Prototipare</b>.<br><br><i>'Assicurati di costruire la cosa giusta, prima di costruirla per bene.'</i><br>Se costruiscono subito 'per bene' qualcosa che nessuno vuole, sprecano tempo prezioso.<br>Esempi lampo: <b>Figma cliccabile</b>, landing con waitlist, video-demo finto, bot Telegram manuale.",
         extraContent: "<br><img src='img/pretotype-it.jpg' style='max-width: 100%; border-radius: 8px; border: 1px solid #444;' alt='Pretotyping'>",
         notes: "Citare Alberto Savoia - concetto chiave Pretotyping"
     },
@@ -73,7 +75,7 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "Devono usare l'<b>Ipotesi XYZ</b> per trasformare opinioni in DATI. 📊<br><br>Formula:<br><i>'Almeno il <b>X%</b> di <b>Y</b> farà <b>Z</b>'</i><br><br>Esempio: <i>'Almeno il 10% dei visitatori del sito lascerà la mail.'</i><br>Ora scrivi la tua ipotesi in 1 riga. Timer: 60 secondi.",
+        text: "Devono usare l'<b>Ipotesi XYZ</b> per trasformare opinioni in DATI. 📊<br><br>Formula:<br><i>'Almeno il <b>X%</b> di <b>Y</b> farà <b>Z</b>'</i><br><br>Esempio hackathon: <i>'Almeno 3 su 10 persone intervistate diranno che pagherebbero per questo.'</i><br>Ora scrivi la tua ipotesi in 1 riga. Timer: 60 secondi.",
         notes: "XYZ Hypothesis: dati concreti, non opinioni"
     },
 
@@ -85,7 +87,7 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "Posso farlo io in un attimo! 🧠<br>Dammi le trascrizioni e estrarrò il <b>Sentiment</b> e la <b>Propensione all'acquisto</b>.<br><br>Esempio di mio output:<br><pre style='background:#2d2d3e; padding:10px; border-radius:5px; font-size:0.8em;'>{\n  \"sentiment\": \"Positivo (scetticismo iniziale)\",\n  \"propensione\": \"Alta se integrato con WhatsApp\"\n}</pre>",
+        text: "Posso farlo io in un attimo! 🧠<br>Dammi le trascrizioni e estrarrò il <b>Sentiment</b> e la <b>Propensione all'acquisto</b> in 10 secondi. Voi ci mettereste ore.<br><br>Esempio di mio output:<br><pre style='background:#2d2d3e; padding:10px; border-radius:5px; font-size:0.8em;'>{\n  \"sentiment\": \"Positivo (scetticismo iniziale)\",\n  \"propensione\": \"Alta se integrato con WhatsApp\"\n}</pre>",
         notes: "Mostrare potenza AI per analisi qualitativa veloce"
     },
 
@@ -97,7 +99,7 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "Ecco il mio <b>Kit di Sopravvivenza No-Code & AI</b>: 🛠️<br><br>🔹 <b>Frontend</b>: Lovable, Retool, Glide, Bubble o anche Notion<br>🔹 <b>Automazioni</b>: n8n, Make.com, Zapier<br>🔹 <b>AI App</b>: Flowise, Voiceflow<br>🔹 <b>Design</b>: NanoBanana, higgsfield.ai, MidJourney, DALL-E<br>🔹 <b>Coding</b>: Cursor, GitHub Copilot, Claude Code, Gemini CLI, aistudio.google<br><br>Non reinventate la ruota, assemblatela!<br>Scegli 1 tool per categoria adesso. Tempo: 2 minuti.",
+        text: "Ecco il mio <b>Kit di Sopravvivenza No-Code & AI</b>: 🛠️<br><br>🔹 <b>Frontend</b>: <b>Lovable</b> (il mio preferito!), Retool, Glide, Bubble<br>🔹 <b>Automazioni</b>: n8n, Make.com, Zapier<br>🔹 <b>AI App</b>: Flowise, Voiceflow<br>🔹 <b>Design</b>: NanoBanana, higgsfield.ai, MidJourney, DALL-E<br>🔹 <b>Coding</b>: <b>Cursor</b>, GitHub Copilot, Claude Code, Gemini CLI<br><br>Non reinventate la ruota, assemblatela!<br>Scegli 1 tool per categoria adesso. Tempo: 2 minuti.",
         notes: "Elenco tool pratici dal PDF"
     },
 
@@ -123,6 +125,7 @@ const SCRIPT = [
     {
         role: 'ai',
         text: "Assolutamente sì. Stampatevelo in testa: 🧠<br><br>✨ <b>Good enough for now, safe enough to try</b><br>✨ <b>Fatto è meglio che perfetto</b><br>✨ <b>Fallite il prima possibile</b> (per imparare subito)<br><br>Non cercate la perfezione oggi. Cercate soluzioni reali.<br>Decidete un test concreto da fare entro 30 minuti.",
+        effect: 'sparkle',
         notes: "Mantra fondamentale: Fail Fast, Learn Faster"
     },
 
@@ -134,19 +137,20 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "Il Pitch deve essere una storia. 📖<br><br>1️⃣ <b>Gancio</b>: Il Problema (fate sentire il dolore)<br>2️⃣ <b>Soluzione</b>: La vostra magia<br>3️⃣ <b>Demo</b>: Fate vedere che funziona<br>4️⃣ <b>Validazione</b>: I dati che avete raccolto<br>5️⃣ <b>Team</b>: Perché voi?",
+        text: "Il Pitch deve essere una storia. 📖<br><br>1️⃣ <b>Gancio</b>: Il Problema (fate sentire il dolore)<br>2️⃣ <b>Soluzione</b>: La vostra magia<br>3️⃣ <b>Demo</b>: Fate vedere che funziona<br>4️⃣ <b>Validazione</b>: I dati che avete raccolto<br>5️⃣ <b>Team</b>: Perché voi?<br><br>⏱️ <b>5 minuti totali</b>: 30s gancio, 1min soluzione, 1.5min demo, 1min validazione, 1min team.",
+        sound: 'ding',
         notes: "Struttura pitch efficace"
     },
 
     // --- SCENA 10: CONCLUSIONE (Indice 19) ---
     {
         role: 'user',
-        text: "Grazie mille AI. Un ultimo saluto per i ragazzi di AsperAstra ?",
+        text: "Grazie mille. Un ultimo saluto per i ragazzi di AsperAstra ?",
         notes: "Chiusura motivazionale"
     },
     {
         role: 'ai',
-        text: "⚠️ <b>DISCLAIMER FINALE</b> ⚠️<br>L'AI amplifica, ma non crea dal nulla.<br><br><b>Sognate in grande, prototipate con l'AI, ma restate UMANI.</b><br><br>Ora andate e spaccate tutto! 🚀",
+        text: "⚠️ <b>DISCLAIMER FINALE</b> ⚠️<br>L'AI è un <b>moltiplicatore</b>: 0 × AI = 0. Ma voi non siete zero.<br><br><b>Sognate in grande, prototipate con l'AI, ma restate UMANI.</b><br><br>Ora andate e spaccate tutto! 🚀",
         sound: 'applause',
         effect: 'confetti',
         notes: "Messaggio finale"

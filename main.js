@@ -415,12 +415,28 @@ class HackathonPresenter {
             setTimeout(() => {
                 this.animation.playApplauseSound();
             }, 1000);
+        } else if (scene.sound === 'startup') {
+            setTimeout(() => {
+                this.animation.playStartupSound();
+            }, 500);
+        } else if (scene.sound === 'ding') {
+            setTimeout(() => {
+                this.animation.playDingSound();
+            }, 500);
         }
 
         // Effetti visivi
         if (scene.effect === 'confetti') {
             setTimeout(() => {
                 this.animation.confetti(document.body);
+            }, 1000);
+        } else if (scene.effect === 'highlight') {
+            setTimeout(() => {
+                this.animation.highlight(document.body);
+            }, 500);
+        } else if (scene.effect === 'sparkle') {
+            setTimeout(() => {
+                this.animation.sparkle(document.body);
             }, 1000);
         }
         

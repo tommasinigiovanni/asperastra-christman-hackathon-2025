@@ -481,6 +481,159 @@ class AnimationEngine {
     }
 
     /**
+     * Genera suono "Startup" - Boot AI futuristico
+     */
+    playStartupSound() {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+
+        const ctx = new AudioContext();
+        const now = ctx.currentTime;
+
+        // Oscillatore 1: Sweep basso ascendente
+        const osc1 = ctx.createOscillator();
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(80, now);
+        osc1.frequency.exponentialRampToValueAtTime(400, now + 0.8);
+        osc1.frequency.exponentialRampToValueAtTime(200, now + 1.2);
+
+        // Oscillatore 2: Tono alto "bip" finale
+        const osc2 = ctx.createOscillator();
+        osc2.type = 'sine';
+        osc2.frequency.setValueAtTime(800, now + 1.0);
+        osc2.frequency.setValueAtTime(1200, now + 1.1);
+
+        // Gain per osc1
+        const gain1 = ctx.createGain();
+        gain1.gain.setValueAtTime(0, now);
+        gain1.gain.linearRampToValueAtTime(0.15, now + 0.1);
+        gain1.gain.linearRampToValueAtTime(0.1, now + 0.8);
+        gain1.gain.linearRampToValueAtTime(0, now + 1.2);
+
+        // Gain per osc2 (bip finale)
+        const gain2 = ctx.createGain();
+        gain2.gain.setValueAtTime(0, now);
+        gain2.gain.setValueAtTime(0.12, now + 1.0);
+        gain2.gain.setValueAtTime(0.15, now + 1.1);
+        gain2.gain.linearRampToValueAtTime(0, now + 1.4);
+
+        // Collegamenti
+        osc1.connect(gain1);
+        gain1.connect(ctx.destination);
+        osc2.connect(gain2);
+        gain2.connect(ctx.destination);
+
+        osc1.start(now);
+        osc1.stop(now + 1.5);
+        osc2.start(now + 1.0);
+        osc2.stop(now + 1.5);
+    }
+
+    /**
+     * Genera suono "Ding" - Campanello breve
+     */
+    playDingSound() {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+
+        const ctx = new AudioContext();
+        const now = ctx.currentTime;
+
+        // Oscillatore principale
+        const osc = ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, now); // La4
+        osc.frequency.setValueAtTime(1320, now + 0.05); // Mi5
+
+        // Gain con decay naturale
+        const gain = ctx.createGain();
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.8);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.8);
+    }
+
+    /**
+     * Effetto Highlight - Flash luminoso su elemento/container
+     * @param {HTMLElement} container - Container dove applicare il flash
+     */
+    highlight(container) {
+        if (this.config.accessibility.reducedMotion) return;
+
+        const flash = document.createElement('div');
+        flash.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0;
+        `;
+        
+        container.appendChild(flash);
+
+        // Animazione flash
+        const animation = flash.animate([
+            { opacity: 0 },
+            { opacity: 1 },
+            { opacity: 0 }
+        ], {
+            duration: 600,
+            easing: 'ease-out'
+        });
+
+        animation.onfinish = () => flash.remove();
+    }
+
+    /**
+     * Effetto Sparkle - Stelline brillanti
+     * @param {HTMLElement} container - Container dove mostrare le stelline
+     */
+    sparkle(container) {
+        if (this.config.accessibility.reducedMotion) return;
+
+        const sparkleCount = 30;
+        const sparkles = ['✨', '⭐', '🌟', '💫'];
+
+        for (let i = 0; i < sparkleCount; i++) {
+            setTimeout(() => {
+                const spark = document.createElement('div');
+                spark.innerHTML = sparkles[Math.floor(Math.random() * sparkles.length)];
+                spark.style.cssText = `
+                    position: fixed;
+                    left: ${10 + Math.random() * 80}%;
+                    top: ${10 + Math.random() * 80}%;
+                    font-size: ${1 + Math.random()}em;
+                    pointer-events: none;
+                    z-index: 9999;
+                    opacity: 0;
+                `;
+                
+                container.appendChild(spark);
+
+                // Animazione sparkle
+                const animation = spark.animate([
+                    { opacity: 0, transform: 'scale(0) rotate(0deg)' },
+                    { opacity: 1, transform: 'scale(1.5) rotate(180deg)' },
+                    { opacity: 0, transform: 'scale(0) rotate(360deg)' }
+                ], {
+                    duration: 800 + Math.random() * 400,
+                    easing: 'ease-out'
+                });
+
+                animation.onfinish = () => spark.remove();
+            }, i * 100); // Stagger di 100ms tra ogni sparkle
+        }
+    }
+
+    /**
      * Avvia l'effetto neve natalizia
      */
     letItSnow() {
