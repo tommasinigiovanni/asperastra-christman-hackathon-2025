@@ -122,7 +122,7 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "Assolutamente sì. Stampatevelo in testa: 🧠<br><br>✨ <b>Good enough for now, safe enough to try</b><br>✨ <b>Fatto è meglio che perfetto</b><br>✨ <b>Fallite il prima possibile</b> (per imparare subito)<br><br>Non cercate la perfezione oggi. Cercate l'apprendimento.",
+        text: "Assolutamente sì. Stampatevelo in testa: 🧠<br><br>✨ <b>Good enough for now, safe enough to try</b><br>✨ <b>Fatto è meglio che perfetto</b><br>✨ <b>Fallite il prima possibile</b> (per imparare subito)<br><br>Non cercate la perfezione oggi. Cercate soluzioni reali.",
         notes: "Mantra fondamentale: Fail Fast, Learn Faster"
     },
 
