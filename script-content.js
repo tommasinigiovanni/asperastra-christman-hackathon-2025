@@ -47,7 +47,7 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "ASSOLUTAMENTE NO! 🛑 Ferma tutto!<br>Prima di scrivere una riga di codice, devono compilare l'<b>A3 Definition Canvas</b>.<br><br>Serve per capire se stanno risolvendo il problema giusto.",
+        text: "ASSOLUTAMENTE NO! 🛑 Ferma tutto!<br>Prima di scrivere una riga di codice, devono compilare l'<b>A3 Definition Canvas</b>.<br><br>Serve per capire se stanno risolvendo il problema giusto.<br>Focalizzatevi su: Problema, Cliente, Concorrenza. 10 minuti, via.",
         extraContent: "<br><img src='img/A3.png' style='max-width: 100%; border-radius: 8px; border: 1px solid #444;' alt='A3 Definition Canvas'>",
         notes: "Mostrare A3 Canvas: Problema, Cliente, Concorrenza"
     },
@@ -60,7 +60,7 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "Nemmeno per sogno! 🚫<br>Ricorda la regola d'oro di Alberto Savoia: <b>Pretotipare prima di Prototipare</b>.<br><br><i>'Assicurati di costruire la cosa giusta, prima di costruirla per bene.'</i><br>Se costruiscono subito 'per bene' qualcosa che nessuno vuole, sprecano tempo prezioso.",
+        text: "Nemmeno per sogno! 🚫<br>Ricorda la regola d'oro di Alberto Savoia: <b>Pretotipare prima di Prototipare</b>.<br><br><i>'Assicurati di costruire la cosa giusta, prima di costruirla per bene.'</i><br>Se costruiscono subito 'per bene' qualcosa che nessuno vuole, sprecano tempo prezioso.<br>Esempi lampo: landing con waitlist, video-demo finto, concierge via chat.",
         extraContent: "<br><img src='img/pretotype-it.jpg' style='max-width: 100%; border-radius: 8px; border: 1px solid #444;' alt='Pretotyping'>",
         notes: "Citare Alberto Savoia - concetto chiave Pretotyping"
     },
@@ -73,7 +73,7 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "Devono usare l'<b>Ipotesi XYZ</b> per trasformare opinioni in DATI. 📊<br><br>Formula:<br><i>'Almeno il <b>X%</b> di <b>Y</b> farà <b>Z</b>'</i><br><br>Esempio: <i>'Almeno il 10% dei visitatori del sito lascerà la mail.'</i>",
+        text: "Devono usare l'<b>Ipotesi XYZ</b> per trasformare opinioni in DATI. 📊<br><br>Formula:<br><i>'Almeno il <b>X%</b> di <b>Y</b> farà <b>Z</b>'</i><br><br>Esempio: <i>'Almeno il 10% dei visitatori del sito lascerà la mail.'</i><br>Ora scrivi la tua ipotesi in 1 riga. Timer: 60 secondi.",
         notes: "XYZ Hypothesis: dati concreti, non opinioni"
     },
 
@@ -97,7 +97,7 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "Ecco il mio <b>Kit di Sopravvivenza No-Code & AI</b>: 🛠️<br><br>🔹 <b>Frontend</b>: Lovable, Retool, Glide, Bubble o anche Notion<br>🔹 <b>Automazioni</b>: n8n, Make.com, Zapier<br>🔹 <b>AI App</b>: Flowise, Voiceflow<br>🔹 <b>Design</b>: NanoBanana, higgsfield.ai, MidJourney, DALL-E<br>🔹 <b>Coding</b>: Cursor, GitHub Copilot, Claude Code, Gemini CLI, aistudio.google<br><br>Non reinventate la ruota, assemblatela!",
+        text: "Ecco il mio <b>Kit di Sopravvivenza No-Code & AI</b>: 🛠️<br><br>🔹 <b>Frontend</b>: Lovable, Retool, Glide, Bubble o anche Notion<br>🔹 <b>Automazioni</b>: n8n, Make.com, Zapier<br>🔹 <b>AI App</b>: Flowise, Voiceflow<br>🔹 <b>Design</b>: NanoBanana, higgsfield.ai, MidJourney, DALL-E<br>🔹 <b>Coding</b>: Cursor, GitHub Copilot, Claude Code, Gemini CLI, aistudio.google<br><br>Non reinventate la ruota, assemblatela!<br>Scegli 1 tool per categoria adesso. Tempo: 2 minuti.",
         notes: "Elenco tool pratici dal PDF"
     },
 
@@ -109,7 +109,7 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "Per carità! 😱 Qui serve velocità.<br>Usate il <b>Lean Canvas</b>. È una mappa in una sola pagina per decostruire l'idea.",
+        text: "Per carità! 😱 Qui serve velocità.<br>Usate il <b>Lean Canvas</b>. È una mappa in una sola pagina per decostruire l'idea.<br>Compilatelo in 10 minuti: problema, segmento, proposta di valore, canali, revenue, costi, metriche, vantaggio sleale.",
         extraContent: "<br><img src='img/lean-canvas.png' style='max-width: 100%; border-radius: 8px; border: 1px solid #444;' alt='Lean Canvas'>",
         notes: "Spiegare Lean Canvas: veloce e iterativo"
     },
@@ -122,7 +122,7 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "Assolutamente sì. Stampatevelo in testa: 🧠<br><br>✨ <b>Good enough for now, safe enough to try</b><br>✨ <b>Fatto è meglio che perfetto</b><br>✨ <b>Fallite il prima possibile</b> (per imparare subito)<br><br>Non cercate la perfezione oggi. Cercate soluzioni reali.",
+        text: "Assolutamente sì. Stampatevelo in testa: 🧠<br><br>✨ <b>Good enough for now, safe enough to try</b><br>✨ <b>Fatto è meglio che perfetto</b><br>✨ <b>Fallite il prima possibile</b> (per imparare subito)<br><br>Non cercate la perfezione oggi. Cercate soluzioni reali.<br>Decidete un test concreto da fare entro 30 minuti.",
         notes: "Mantra fondamentale: Fail Fast, Learn Faster"
     },
 
