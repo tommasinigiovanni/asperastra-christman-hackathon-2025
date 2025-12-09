@@ -97,7 +97,7 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "Ecco il mio <b>Kit di Sopravvivenza No-Code & AI</b>: 🛠️<br><br>🔹 <b>Frontend</b>: Retool, Glide, o anche Notion<br>🔹 <b>Automazioni</b>: Make.com, Zapier, n8n<br>🔹 <b>AI App</b>: Flowise, Voiceflow<br>🔹 <b>Design</b>: MidJourney, DALL-E<br><br>Non reinventate la ruota, assemblatela!",
+        text: "Ecco il mio <b>Kit di Sopravvivenza No-Code & AI</b>: 🛠️<br><br>🔹 <b>Frontend</b>: Lovable, Retool, Glide, Bubble o anche Notion<br>🔹 <b>Automazioni</b>: n8n, Make.com, Zapier<br>🔹 <b>AI App</b>: Flowise, Voiceflow<br>🔹 <b>Design</b>: NanoBanana, higgsfield.ai, MidJourney, DALL-E<br>🔹 <b>Coding</b>: Cursor, GitHub Copilot, Claude Code, Gemini CLI, aistudio.google<br><br>Non reinventate la ruota, assemblatela!",
         notes: "Elenco tool pratici dal PDF"
     },
 
