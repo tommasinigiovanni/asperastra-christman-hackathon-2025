@@ -16,7 +16,7 @@ const SCRIPT = [
     // --- SCENA 1: INTRO ---
     {
         role: 'user',
-        text: "Ciao ChatGPT! 👋 Sono Giovanni. Sono qui all'Hackathon di AsperAstra a Trieste. Devo spiegare a questi startupper come trasformare un'idea in un progetto vincente in 48 ore. Mi aiuti?",
+        text: "Ciao AstraGPT! Sono qui all'Hackathon. Devo spiegare a questi startupper come trasformare un'idea in un progetto vincente in 48 ore. Mi aiuti?",
         notes: "Apertura energica, coinvolgere subito il pubblico"
     },
     {
@@ -42,7 +42,7 @@ const SCRIPT = [
     // --- SCENA 2: DEFINIZIONE (A3 Canvas) (Indice 3) ---
     {
         role: 'user',
-        text: "Ok, ora ci siamo! Molti team stanno già aprendo l'editor di codice. È la mossa giusta?",
+        text: "Ok, ora ci siamo! Senti, ho visto qualche team che ha già aperto l'editor di codice. È la mossa giusta?",
         notes: "Introduzione al tema centrale: non correre alla soluzione"
     },
     {
@@ -61,6 +61,7 @@ const SCRIPT = [
     {
         role: 'ai',
         text: "Nemmeno per sogno! 🚫<br>Ricorda la regola d'oro di Alberto Savoia: <b>Pretotipare prima di Prototipare</b>.<br><br><i>'Assicurati di costruire la cosa giusta, prima di costruirla per bene.'</i><br>Se costruiscono subito 'per bene' qualcosa che nessuno vuole, sprecano tempo prezioso.",
+        extraContent: "<br><img src='img/pretotype-it.jpg' style='max-width: 100%; border-radius: 8px; border: 1px solid #444;' alt='Pretotyping'>",
         notes: "Citare Alberto Savoia - concetto chiave Pretotyping"
     },
 
