@@ -1,790 +1,203 @@
-# 🤖 Hackathon AI Mentor - Interactive Presentation System
+# 🎄 AstraGPT - AI Mentor per Hackathon
 
-<div align="center">
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Made with AI](https://img.shields.io/badge/Made%20with-AI%20%E2%9D%A4%EF%B8%8F-ff69b4)](https://evoseed.io)
+[![Hackathon](https://img.shields.io/badge/Event-Christmas%20Hackathon%202025-red?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTEyIDJMNiAxMmg0djEwaDRWMTJoNHoiLz48L3N2Zz4=)](https://www.eventbrite.it/e/christmas-hackathon-tickets-1963193523677)
+[![Location](https://img.shields.io/badge/Location-Trieste%20🇮🇹-green)](https://asperastra.com)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
+Una **Single Page Application** che simula un'interfaccia ChatGPT per presentazioni interattive dal vivo. Sviluppata per guidare i team durante il **Christmas Hackathon AsperAstra 2025** con metodologia **Pretotyping**.
 
-Un'applicazione **Single Page Application (SPA)** che simula un'interfaccia ChatGPT per presentazioni interattive dal vivo, sviluppata per l'Hackathon **AsperAstra ** (Trieste).
-
-![Hackathon AI Mentor Preview](img/preview.png)
-
-[Caratteristiche](#-caratteristiche-principali) •
-[Quick Start](#-quick-start) •
-[Documentazione](#-documentazione) •
-[Sviluppo](#-sviluppo) •
-[Testing](#-testing)
-
-</div>
+🔗 **Repository:** https://github.com/tommasinigiovanni/asperastra-christman-hackathon-2025
 
 ---
 
-## 📖 Indice
+## 🎯 Cos'è AstraGPT?
 
-- [Caratteristiche Principali](#-caratteristiche-principali)
-- [Tech Stack](#-tech-stack)
-- [Prerequisiti](#-prerequisiti)
-- [Quick Start](#-quick-start)
-- [Architettura](#-architettura)
-- [Configurazione](#-configurazione)
-- [Personalizzazione](#-personalizzazione)
-- [Sviluppo](#-sviluppo)
-- [Testing](#-testing)
-- [Deployment](#-deployment)
-- [API Documentation](#-api-documentation)
-- [Accessibilità](#-accessibilit)
-- [Performance](#-performance)
-- [Troubleshooting](#-troubleshooting)
-- [Contributing](#-contributing)
-- [License](#-license)
-- [Autore](#-autore)
+**AstraGPT** è un AI Mentor virtuale che guida i partecipanti dell'hackathon attraverso le fasi cruciali:
+
+- 📋 **Definizione del problema** con A3 Canvas
+- 🧪 **Pretotyping** prima di prototipare (con esempio Fireflies.ai!)
+- 📊 **Validazione** con Ipotesi XYZ
+- 🛠️ **Tool selection** No-Code & AI
+- 📝 **Lean Canvas** per il business model
+- 🎤 **Pitch** structure
+
+> *"Pretotipare prima di prototipare. Fatto è meglio che perfetto."*
 
 ---
 
-## 🚀 Caratteristiche Principali
+## 🚀 Quick Start
 
-### Core Features
-
-- ✨ **Interfaccia Realistica** - Clone pixel-perfect di ChatGPT con tema scuro
-- 🎯 **Script Pre-definito** - Zero rischio di allucinazioni o latenza di rete
-- ⌨️ **Animazione Typing** - Simulazione realistica carattere-per-carattere con velocità variabile
-- 🔀 **Branching Logic** - Supporto per bivi narrativi con bottoni interattivi
-- 📊 **Modalità Presentatore** - Vista dedicata con note private, timer e teleprompter
-- 💾 **Persistenza Stato** - Salvataggio automatico su localStorage
-- 📤 **Export Conversazione** - Export in TXT, Markdown, HTML e JSON
-
-### UX/UI Avanzata
-
-- 📱 **Fully Responsive** - Ottimizzato per mobile, tablet e desktop
-- ♿ **WCAG 2.1 AA Compliant** - Accessibilità screen reader e navigazione keyboard
-- 🎨 **Animazioni Fluide** - Fade-in, pulse, shake con supporto reduced-motion
-- 🎮 **Keyboard Shortcuts** - Controllo completo da tastiera
-- 📍 **Progress Tracking** - Barra progresso e sistema bookmarks
-- 🔊 **Haptic Feedback** - Vibrazione su dispositivi mobile
-
-### Developer Experience
-
-- 🧩 **Architettura Modulare** - Codice organizzato in moduli ES6
-- 🧪 **Test Coverage >70%** - Unit test (Jest) ed E2E (Playwright)
-- 🐳 **Docker Ready** - Container ottimizzato < 40MB
-- 🔧 **Developer Tools** - ESLint, Prettier, Hot-reload con Docker Compose
-- 📚 **JSDoc Completo** - Documentazione inline dettagliata
-
----
-
-## 🛠️ Tech Stack
-
-| Categoria | Tecnologie |
-|-----------|-----------|
-| **Frontend** | HTML5, CSS3, Vanilla JavaScript (ES6+) |
-| **Server** | Nginx Alpine |
-| **Containerization** | Docker, Docker Compose |
-| **Testing** | Jest, Playwright |
-| **Linting/Formatting** | ESLint (Airbnb), Prettier |
-| **CI/CD Ready** | GitHub Actions compatible |
-
-**Nota**: Zero dipendenze runtime - funziona completamente offline!
-
----
-
-## 📋 Prerequisiti
-
-### Opzione 1: Docker (Raccomandato)
-- [Docker Desktop](https://www.docker.com/products/docker-desktop) o Docker Engine
-- **Mac Users**: Docker Desktop include Docker Compose V2 (comando `docker compose`)
-
-### Opzione 2: Sviluppo Locale
-- Un web server qualsiasi (Python, Node.js, ecc.)
-- Browser moderno (Chrome, Firefox, Safari, Edge)
-
-### Opzione 3: Testing e Sviluppo
-- Node.js 18+ e npm
-- Docker Compose (opzionale)
-
----
-
-## 🏃‍♂️ Quick Start
-
-### Metodo 1: Docker Production (Più veloce)
+### Con Docker (Raccomandato)
 
 ```bash
-# 1. Build dell'immagine
-docker build -t hackathon-ai-mentor .
+# Build e run
+docker build -t astragpt .
+docker run -d -p 8080:80 astragpt
 
-# 2. Run del container
-docker run -d --name ai-presenter -p 8080:80 hackathon-ai-mentor
-
-# 3. Apri il browser
+# Apri nel browser
 open http://localhost:8080
-
-# 4. Stop e rimozione
-docker stop ai-presenter && docker rm ai-presenter
 ```
 
-### Metodo 2: Docker Compose Development (Con hot-reload)
+### Con Docker Compose (Dev mode)
 
 ```bash
-# 1. Avvia ambiente di sviluppo
 docker compose up
-
-# 2. Apri il browser
 open http://localhost:8080
-
-# 3. Modifica i file - le modifiche si riflettono automaticamente!
-
-# 4. Stop
-docker compose down
 ```
 
-> **💡 Nota Mac**: Usa `docker compose` (con spazio, Docker Compose V2) invece di `docker-compose` (vecchio comando standalone)
-
-### Metodo 3: Senza Docker
+### Senza Docker
 
 ```bash
-# Con Python 3
+# Con Python
 python3 -m http.server 8080
 
-# Con Node.js (http-server)
+# Con Node.js
 npx http-server -p 8080
-
-# Apri http://localhost:8080
 ```
-
-### Utilizzo Base
-
-1. **Premi INVIO** o clicca **➤** per avviare la presentazione
-2. **Premi INVIO** nuovamente per ogni step successivo
-3. **Clicca sui bottoni** quando appaiono per scegliere il branch narrativo
-4. Usa le **scorciatoie tastiera** per navigazione rapida (vedi sotto)
 
 ---
 
-## 🏗️ Architettura
+## ⌨️ Controlli
 
-### Struttura Moduli
+| Tasto | Azione |
+|-------|--------|
+| **INVIO / SPAZIO / →** | Avanti |
+| **←** | Indietro |
+| **H** | Nascondi UI (Stealth Mode) |
+| **R** | Reset presentazione |
+| **P** | Modalità Presentatore |
+
+---
+
+## 📁 Struttura Progetto
 
 ```
-├── config.js              # Configurazione centralizzata
-├── script-content.js      # Contenuto copione separato
-├── state-manager.js       # Gestione stato e persistenza
-├── animation-engine.js    # Motore animazioni typing
-├── chat-manager.js        # Rendering messaggi e DOM
+.
+├── index.html            # Pagina principale
+├── style.css             # Stili (tema ChatGPT dark)
+├── script-content.js     # 📝 COPIONE - modifica qui i contenuti!
+├── config.js             # Configurazione
 ├── main.js               # Controller principale
-├── index.html            # Markup HTML semantico
-└── style.css             # Stili responsive + animazioni
-```
-
-### Pattern Architetturali
-
-- **Separation of Concerns** - Ogni modulo ha una responsabilità singola
-- **Event-Driven** - Sistema di eventi per comunicazione tra moduli
-- **State Management** - Stato centralizzato con history e bookmarks
-- **Progressive Enhancement** - Funziona senza JS (HTML statico)
-
-### Diagramma Flusso
-
-```
-User Input (INVIO)
-    ↓
-main.js (playScene)
-    ↓
-state-manager (getStep, setStep)
-    ↓
-chat-manager (addMessage)
-    ↓
-animation-engine (typeText)
-    ↓
-DOM Update + Auto-scroll
-    ↓
-Await completion
-    ↓
-Next scene (automatico o con bottoni)
+├── animation-engine.js   # Animazioni e effetti
+├── chat-manager.js       # Gestione messaggi
+├── state-manager.js      # Gestione stato
+├── img/                  # Immagini (A3, Lean Canvas, ecc.)
+├── Dockerfile            # Build produzione
+└── docker-compose.yml    # Dev environment
 ```
 
 ---
 
-## ⚙️ Configurazione
+## ✏️ Personalizza il Copione
 
-### File `config.js`
-
-Tutte le impostazioni sono centralizzate in `config.js`:
-
-```javascript
-const CONFIG = {
-    timing: {
-        typingSpeed: 30,              // ms per carattere
-        aiThinkingDelay: 1500,        // delay "sta scrivendo..."
-        punctuationPause: 300,        // pausa su punteggiatura
-    },
-    ux: {
-        enableTypingAnimation: true,  // typing carattere-per-carattere
-        enableAutoScroll: true,       // scroll automatico
-        showProgressBar: true,        // barra progresso
-    },
-    accessibility: {
-        reducedMotion: false,         // rispetta prefers-reduced-motion
-        screenReaderAnnouncements: true,
-    },
-    // ... altre opzioni
-};
-```
-
-### Temi
-
-Due temi disponibili: `dark` (default) e `light`.
-
-Per cambiare tema:
-```javascript
-document.body.classList.add('light-theme');
-```
-
-O usa lo shortcut: **Premi T**
-
----
-
-## 🎨 Personalizzazione
-
-### Modificare lo Script
-
-Edita `script-content.js`:
+Modifica `script-content.js` per adattare la presentazione:
 
 ```javascript
 const SCRIPT = [
     {
         role: 'user',
-        text: "Il tuo testo qui...",
-        notes: "Note private per presenter mode"
+        text: "La tua domanda...",
+        notes: "Note per te (visibili in Presenter Mode)"
     },
     {
         role: 'ai',
-        text: "Risposta AI...",
-        buttons: [
+        text: "Risposta di AstraGPT...",
+        sound: 'ding',           // Effetto sonoro
+        effect: 'sparkle',       // Effetto visivo
+        buttons: [               // Bottoni per branching
             { label: "Opzione A", nextIndex: 5 },
             { label: "Opzione B", nextIndex: 8 }
         ]
-    },
-    // ... altri step
+    }
 ];
 ```
 
-#### Proprietà Scene
+### Effetti Disponibili
 
-| Proprietà | Tipo | Descrizione |
-|-----------|------|-------------|
-| `role` | `'user' \| 'ai'` | Chi parla |
-| `text` | `string` | Contenuto (supporta HTML) |
-| `extraContent` | `string` | HTML extra (opzionale) |
-| `buttons` | `Array<{label, nextIndex}>` | Bottoni branching |
-| `autoNext` | `number` | Indice automatico successivo |
-| `notes` | `string` | Note per presenter mode |
-
-### Aggiungere Media
-
-```javascript
-{
-    role: 'ai',
-    text: "Guarda questa immagine:",
-    extraContent: "<img src='meme.jpg' alt='Descrizione' style='max-width:300px'>"
-}
-```
-
-### Personalizzare Stili
-
-Modifica le CSS variables in `style.css`:
-
-```css
-:root {
-    --color-accent: #10a37f;      /* Colore principale */
-    --color-bg: #343541;          /* Sfondo */
-    --font-size-lg: 1.1rem;       /* Dimensione testo */
-    --spacing-lg: 24px;           /* Spaziatura */
-}
-```
+| Suoni | Effetti Visivi |
+|-------|----------------|
+| `'startup'` - Boot AI | `'confetti'` - Coriandoli |
+| `'ding'` - Campanello | `'sparkle'` - Stelline |
+| `'glitch'` - Allarme | `'highlight'` - Flash |
+| `'applause'` - Applausi | |
 
 ---
 
-## 💻 Sviluppo
+## 🎯 Filosofia
 
-### Setup Ambiente
+> *"L'AI è un moltiplicatore: 0 × AI = 0. Ma voi non siete zero."*
 
-```bash
-# 1. Clone repository
-git clone <repo-url>
-cd asperastra-christman-hackathon
+> *"Prima vendi, poi automatizza."* - Lezione da Fireflies.ai
 
-# 2. Installa dipendenze dev
-npm install
-
-# 3. Avvia dev server con hot-reload
-docker compose up
-# oppure
-npm run dev
-
-# 4. Apri http://localhost:8080
-```
-
-### Scripts NPM Disponibili
-
-```bash
-npm run dev              # Dev server (Python)
-npm run docker:dev       # Docker Compose dev
-npm run docker:build     # Build immagine Docker
-npm run lint             # Linting con ESLint
-npm run format           # Formattazione con Prettier
-npm test                 # Unit tests
-npm run test:e2e         # E2E tests
-```
-
-### Workflow Sviluppo
-
-1. Modifica file JS/CSS/HTML
-2. Le modifiche si riflettono automaticamente (con docker compose)
-3. Esegui linting: `npm run lint`
-4. Esegui test: `npm test`
-5. Commit changes
-
-### Hot-Reload
-
-Con Docker Compose, i file sono montati come volume - ogni modifica viene riflessa istantaneamente nel browser (refresh manuale).
-
-**Nota Mac Users**: Usa `docker compose` (con spazio) invece di `docker-compose` (con trattino). Docker Compose V2 è integrato come subcommand di Docker.
+> *"Good enough for now, safe enough to try."*
 
 ---
 
-## 🧪 Testing
-
-### Unit Tests (Jest)
-
-```bash
-# Esegui tutti i test
-npm test
-
-# Watch mode
-npm run test:watch
-
-# Con coverage report
-npm test -- --coverage
-```
-
-**Coverage Target**: >70% per branches, functions, lines, statements
-
-### E2E Tests (Playwright)
-
-```bash
-# Esegui E2E tests
-npm run test:e2e
-
-# Con UI interattiva
-npm run test:e2e:ui
-
-# Con browser visibile
-npm run test:e2e:headed
-```
-
-Test coprono:
-- ✅ Flusso completo presentazione
-- ✅ Branching con bottoni
-- ✅ Responsive design (mobile/tablet/desktop)
-- ✅ Accessibilità WCAG
-- ✅ Keyboard navigation
-- ✅ Persistenza stato
-
-### Struttura Test
-
-```
-__tests__/
-├── setup.js                    # Setup Jest
-├── state-manager.test.js       # Test StateManager
-├── animation-engine.test.js    # Test AnimationEngine
-└── e2e/
-    └── presentation.spec.js    # E2E tests Playwright
-```
-
----
-
-## 🚀 Deployment
-
-### Produzione con Docker
-
-```bash
-# Build immagine produzione
-docker build -t hackathon-ai-mentor:latest .
-
-# Tag per registry (opzionale)
-docker tag hackathon-ai-mentor:latest your-registry/hackathon-ai-mentor:latest
-
-# Push to registry
-docker push your-registry/hackathon-ai-mentor:latest
-
-# Run in produzione
-docker run -d \
-  --name ai-presenter \
-  --restart unless-stopped \
-  -p 80:80 \
-  hackathon-ai-mentor:latest
-```
-
-### Deploy su Cloud
-
-#### Heroku
-```bash
-heroku container:push web
-heroku container:release web
-```
-
-#### AWS ECS / Azure / GCP
-Usa l'immagine Docker buildata.
-
-#### Netlify / Vercel
-Deploy diretto dei file statici (senza Docker):
-```bash
-# Netlify
-netlify deploy --prod --dir=.
-
-# Vercel
-vercel --prod
-```
-
-### Ottimizzazioni Produzione
-
-- ✅ Minificazione JS/CSS (considera build step)
-- ✅ Gzip compression (Nginx)
-- ✅ Cache headers (Nginx)
-- ✅ CDN per assets statici
-- ✅ Service Worker (PWA) - da implementare
-
----
-
-## 📚 API Documentation
-
-### StateManager
-
-```javascript
-const state = new StateManager(CONFIG);
-
-// Gestione step
-state.setStep(5);
-state.getStep(); // → 5
-state.goBack();
-state.goForward(totalSteps);
-state.reset();
-
-// Timer
-state.startTimer();
-state.getElapsedTime(); // → ms
-state.getEstimatedTimeRemaining(totalSteps);
-
-// Bookmarks
-state.addBookmark(step, label);
-state.goToBookmark(index);
-
-// Presenter mode
-state.togglePresenterMode();
-
-// Persistenza
-state.saveState();
-state.loadState();
-state.exportState(); // → JSON string
-state.importState(jsonString);
-
-// Eventi
-state.on('stepChanged', callback);
-state.emit('customEvent', data);
-```
-
-### AnimationEngine
-
-```javascript
-const anim = new AnimationEngine(CONFIG);
-
-// Typing animation
-const animId = anim.typeText(element, htmlContent, onComplete);
-anim.cancelAnimation(animId);
-anim.skipAnimation(animId, element, finalContent);
-
-// Effetti visivi
-anim.fadeIn(element);
-anim.fadeOut(element, onComplete);
-anim.shake(element);
-anim.pulse(element);
-
-// Scroll
-anim.scrollToBottom(container);
-anim.scrollTo(element, container);
-
-// Haptic
-anim.hapticFeedback('light' | 'medium' | 'heavy');
-
-// Confetti
-anim.confetti(container);
-```
-
-### ChatManager
-
-```javascript
-const chat = new ChatManager(CONFIG, animationEngine, stateManager);
-
-// Init
-chat.init(containerElement);
-
-// Messaggi
-const msgEl = chat.addMessage(htmlContent, role, animate, onComplete);
-chat.addButtons(messageElement, buttons, onButtonClick);
-
-// Typing indicator
-chat.showTypingIndicator();
-chat.removeTypingIndicator();
-
-// Utility
-chat.clearChat();
-chat.highlightMessage(index);
-
-// Export
-chat.exportAsText();
-chat.exportAsMarkdown();
-chat.exportAsHTML();
-```
-
-### HackathonPresenter (Main)
-
-```javascript
-const app = new HackathonPresenter();
-
-// Init
-app.init();
-
-// Controllo flusso
-app.playScene();
-app.goBack();
-app.reset();
-
-// Modalità
-app.togglePresenterMode();
-
-// Export
-app.exportConversation('markdown' | 'text' | 'html' | 'json');
-```
-
----
-
-## ♿ Accessibilità
-
-### Conformità WCAG 2.1 AA
-
-- ✅ **Semantic HTML** - Uso corretto di tag semantici
-- ✅ **ARIA Attributes** - `role`, `aria-label`, `aria-live`
-- ✅ **Keyboard Navigation** - Completo supporto tastiera
-- ✅ **Screen Reader** - Annunci live per messaggi
-- ✅ **Contrast Ratios** - Tutti i testi >4.5:1
-- ✅ **Focus Indicators** - Indicatori visibili per focus
-- ✅ **Reduced Motion** - Rispetta `prefers-reduced-motion`
-- ✅ **Scalable Text** - Supporto zoom 200%
-
-### Shortcuts Tastiera
-
-| Tasto | Azione |
-|-------|--------|
-| **INVIO / SPAZIO / →** | Avanti (next scene) |
-| **←** | Indietro (previous) |
-| **H** | Toggle Stealth Mode (Nascondi UI) |
-| **1-9** | Selezione rapida bottoni |
-| **R** | Reset presentazione |
-| **P** | Toggle Presenter Mode |
-| **E** | Export conversazione |
-| **T** | Toggle tema |
-| **TAB** | Navigazione elementi |
-
-### Screen Reader
-
-L'app annuncia automaticamente:
-- Nuovi messaggi AI
-- Cambio step
-- Eventi importanti
-
-Per disabilitare:
-```javascript
-CONFIG.accessibility.screenReaderAnnouncements = false;
-```
-
----
-
-## ⚡ Performance
-
-### Metriche
-
-- **Immagine Docker**: < 40MB
-- **First Paint**: < 500ms
-- **Time to Interactive**: < 1s
-- **Lighthouse Score**: 95+
-
-### Ottimizzazioni
-
-- ✅ Asset minimali (zero dipendenze)
-- ✅ CSS/JS inline o minimizzati
-- ✅ Nginx Alpine (lightweight)
-- ✅ Lazy loading immagini
-- ✅ Scroll virtuale (per chat lunghe)
-- ✅ Request Animation Frame per animazioni
-- ✅ Debouncing su scroll/resize
-
-### Bundle Size
-
-```
-index.html:          ~2 KB
-style.css:          ~12 KB
-config.js:           ~3 KB
-script-content.js:   ~5 KB
-state-manager.js:    ~8 KB
-animation-engine.js: ~9 KB
-chat-manager.js:    ~12 KB
-main.js:            ~15 KB
-──────────────────────────
-TOTALE:             ~66 KB (ungzipped)
-                    ~18 KB (gzipped)
-```
-
----
-
-## 🐛 Troubleshooting
-
-### Porta 8080 Occupata
-
-```bash
-# Cambia porta
-docker run -d -p 9999:80 hackathon-ai-mentor
-# Poi vai su http://localhost:9999
-```
-
-### Le Immagini Non Si Caricano
-
-1. Verifica che le immagini siano nella root del progetto
-2. Controlla i path in `script-content.js`
-3. Per URL esterni, verifica connessione internet
-
-### Animazioni Non Funzionano
-
-Controlla in `config.js`:
-```javascript
-CONFIG.ux.enableTypingAnimation = true;
-CONFIG.accessibility.reducedMotion = false;
-```
-
-### LocalStorage Non Salva
-
-Verifica permessi browser e che non sei in modalità incognito.
-
-### Test Falliscono
-
-```bash
-# Pulisci node_modules e reinstalla
-rm -rf node_modules package-lock.json
-npm install
-
-# Verifica versione Node.js
-node --version  # Deve essere >=18
-```
-
-### Docker Build Fallisce
-
-```bash
-# Rebuild senza cache
-docker build --no-cache -t hackathon-ai-mentor .
-
-# Verifica .dockerignore non escluda file necessari
-```
-
-### Docker Compose Comando Non Trovato (Mac)
-
-```bash
-# Verifica versione Docker Desktop
-docker --version
-
-# Se hai Docker Desktop, usa:
-docker compose up
-
-# Se hai solo docker-compose standalone vecchio:
-docker-compose up
-
-# Aggiorna Docker Desktop per V2:
-# https://docs.docker.com/compose/install/
-```
-
----
-
-## 🤝 Contributing
-
-Contributi benvenuti! Vedi [CONTRIBUTING.md](CONTRIBUTING.md) per linee guida.
-
-### Quick Contribution
-
-1. Fork il repo
-2. Crea branch: `git checkout -b feature/nuova-feature`
-3. Commit: `git commit -am 'Add nuova feature'`
-4. Push: `git push origin feature/nuova-feature`
-5. Apri Pull Request
-
-### Code Style
-
-- Usa ESLint: `npm run lint`
-- Formatta con Prettier: `npm run format`
-- Scrivi test per nuove feature
-- Aggiorna documentazione
-
----
-
-## 📄 License
-
-MIT License - vedi [LICENSE](LICENSE) file per dettagli.
+## ✨ Features
+
+- 🎨 **Interfaccia ChatGPT** - Clone pixel-perfect tema scuro
+- ⌨️ **Typing Animation** - Simulazione realistica carattere per carattere
+- 🔀 **Branching Logic** - Bivi narrativi con bottoni
+- 🔊 **Sound Effects** - Suoni generati con Web Audio API
+- ✨ **Visual Effects** - Confetti, sparkle, highlight
+- ❄️ **Snow Effect** - Neve natalizia sui bordi
+- 📱 **Responsive** - Mobile, tablet, desktop
+- ♿ **Accessibile** - WCAG 2.1 AA compliant
+- 💾 **Persistenza** - Salvataggio automatico stato
+- 🐳 **Docker Ready** - Container ottimizzato < 40MB
 
 ---
 
 ## 👨‍💻 Autore
 
-**Giovanni Tommasini**
+<a href="https://www.linkedin.com/in/giovannitommasini/">
+  <img src="https://img.shields.io/badge/LinkedIn-Giovanni%20Tommasini-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
+</a>
+<a href="https://www.giovannitommasini.it/">
+  <img src="https://img.shields.io/badge/Website-giovannitommasini.it-FF5722?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website">
+</a>
+<a href="https://evoseed.io">
+  <img src="https://img.shields.io/badge/Company-Evoseed.io-00C853?style=for-the-badge&logo=seedling&logoColor=white" alt="Evoseed">
+</a>
+<a href="https://instagram.com/tommasini.giovanni">
+  <img src="https://img.shields.io/badge/Instagram-tommasini.giovanni-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram">
+</a>
+<a href="https://t.me/tommasinigiovanni">
+  <img src="https://img.shields.io/badge/Telegram-tommasinigiovanni-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram">
+</a>
+<a href="https://github.com/tommasinigiovanni">
+  <img src="https://img.shields.io/badge/GitHub-tommasinigiovanni-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+</a>
 
-Sviluppato per **Hackathon AsperAstra 2025** - Trieste
+**Giovanni Tommasini** - Telco & AI DevOps Expert | CTO @ AI Fabric | Co-founder @ Evoseed
 
-- 📧 Email: [tommasini.giovanni@gmail.com]
-- 🌐 Website: [https://giovannitommasini.it]
-- 💼 LinkedIn: [https://www.linkedin.com/in/giovannitommasini/]
+> *"Enthusiastic Seeker"* 🔍 - Ottimizzazione processi attraverso automazione e AI.
+
+🎙️ **Podcast:** *Uno Nessuno Centomil AI* - su [YouTube](https://www.youtube.com/@unonessuno100milai) e [Spotify](https://open.spotify.com/show/unonessuno100milai)
 
 ---
 
 ## 🙏 Acknowledgments
 
-- Alberto Savoia per la metodologia Pretotyping
-- OpenAI per l'ispirazione UI ChatGPT
-- AsperAstra per l'opportunità dell'hackathon
-- Community open-source per i tool utilizzati
+- **Alberto Savoia** per la metodologia Pretotyping
+- **OpenAI** per l'ispirazione UI ChatGPT
+- **AsperAstra** per l'opportunità dell'hackathon
+- **Fireflies.ai** per l'esempio di pretotipo perfetto
 
 ---
 
-## 📌 Changelog
+## 📄 Licenza
 
-### v2.0.0 (2025-11-29)
-- ✨ Refactoring completo architettura modulare
-- ✨ Animazione typing realistica
-- ✨ Sistema navigazione avanzato
-- ✨ Modalità presentatore
-- ✨ Responsive design completo
-- ✨ Accessibilità WCAG 2.1 AA
-- ✨ Test coverage >70%
-- ✨ Docker Compose per dev
-
-### v1.0.0 (2025-10-19)
-- 🎉 Release iniziale
-- ✅ Copione base hackathon
-- ✅ Interfaccia ChatGPT style
-- ✅ Branching con bottoni
-- ✅ Docker deployment
+MIT - Usa, modifica e condividi liberamente!
 
 ---
 
 <div align="center">
 
-**[⬆ Torna su](#-hackathon-ai-mentor---interactive-presentation-system)**
+Made with ❤️ by [Giovanni Tommasini](https://linkedin.com/in/giovannitommasini) per il **Christmas Hackathon AsperAstra 2025** 🎄
 
-Made with ❤️ for Hackathons
+**[⬆ Torna su](#-astragpt---ai-mentor-per-hackathon)**
 
 </div>
