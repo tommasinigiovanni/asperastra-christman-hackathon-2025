@@ -62,12 +62,25 @@ const SCRIPT = [
     },
     {
         role: 'ai',
-        text: "Nemmeno per sogno! 🚫<br>Ricorda la regola d'oro di Alberto Savoia: <b>Pretotipare prima di Prototipare</b>.<br><br><i>'Assicurati di costruire la cosa giusta, prima di costruirla per bene.'</i><br>Se costruiscono subito 'per bene' qualcosa che nessuno vuole, sprecano tempo prezioso.<br>Esempi lampo: <b>Figma cliccabile</b>, landing con waitlist, video-demo finto, bot Telegram manuale.",
+        text: "Nemmeno per sogno! 🚫<br>Ricorda la regola d'oro di Alberto Savoia: <b>Pretotipare prima di Prototipare</b>.<br><br><i>'Assicurati di costruire la cosa giusta, prima di costruirla per bene.'</i><br>Se costruiscono subito 'per bene' qualcosa che nessuno vuole, sprecano tempo prezioso.",
         extraContent: "<br><img src='img/pretotype-it.jpg' style='max-width: 100%; border-radius: 8px; border: 1px solid #444;' alt='Pretotyping'>",
         notes: "Citare Alberto Savoia - concetto chiave Pretotyping"
     },
 
-    // --- SCENA 4: XYZ HYPOTHESIS (Indice 7) ---
+    // --- SCENA 3b: FIREFLIES EXAMPLE ---
+    {
+        role: 'user',
+        text: "Bello in teoria, ma funziona davvero? Hai un esempio concreto?",
+        notes: "Richiesta esempio reale"
+    },
+    {
+        role: 'ai',
+        text: "Ecco una storia PAZZESCA. 🔥<br><br><b>Fireflies.ai</b> oggi vale oltre 1 miliardo di dollari. Ma all'inizio?<br><br>I founder vendevano un 'AI notetaker' a <b>100$/mese</b>... ma l'AI <b>non esisteva</b>! 🤯<br><br>Si collegavano alle call come <i>'Fred from Fireflies'</i>, restavano in muto, prendevano appunti A MANO e li inviavano come se fossero generati dall'AI.<br><br>Hanno fatto così per <b>100+ meeting</b>, abbastanza per pagare l'affitto e dimostrare che la gente PAGAVA per quel problema.<br><br>Solo DOPO hanno costruito la tecnologia. <b>Prima vendi, poi automatizza.</b>",
+        effect: 'highlight',
+        notes: "Storia Fireflies - Mechanical Turk pretotyping"
+    },
+
+    // --- SCENA 4: XYZ HYPOTHESIS ---
     {
         role: 'user',
         text: "Ok, ma come dimostrano che la loro idea funziona senza averla costruita?",
