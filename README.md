@@ -10,6 +10,8 @@ Una **Single Page Application** che simula un'interfaccia ChatGPT per presentazi
 
 🔗 **Repository:** https://github.com/tommasinigiovanni/asperastra-christman-hackathon-2025
 
+📄 **Scarica il PDF:** [2025-12_AI-Mentor_Hackathon-AsperAstra.pdf](./2025-12_AI-Mentor_Hackathon-AsperAstra.pdf)
+
 ---
 
 ## 🎯 Cos'è AstraGPT?
