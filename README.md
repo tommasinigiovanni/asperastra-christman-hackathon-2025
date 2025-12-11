@@ -78,13 +78,14 @@ npx http-server -p 8080
 ```
 .
 ├── index.html            # Pagina principale
-├── style.css             # Stili (tema ChatGPT dark)
-├── script-content.js     # 📝 COPIONE - modifica qui i contenuti!
-├── config.js             # Configurazione
-├── main.js               # Controller principale
-├── animation-engine.js   # Animazioni e effetti
-├── chat-manager.js       # Gestione messaggi
-├── state-manager.js      # Gestione stato
+├── src/                  # 📦 Codice sorgente
+│   ├── script-content.js # 📝 COPIONE - modifica qui i contenuti!
+│   ├── config.js         # Configurazione
+│   ├── main.js           # Controller principale
+│   ├── animation-engine.js # Animazioni e effetti
+│   ├── chat-manager.js   # Gestione messaggi
+│   ├── state-manager.js  # Gestione stato
+│   └── style.css         # Stili (tema ChatGPT dark)
 ├── img/                  # Immagini (A3, Lean Canvas, ecc.)
 ├── Dockerfile            # Build produzione
 └── docker-compose.yml    # Dev environment
@@ -94,7 +95,7 @@ npx http-server -p 8080
 
 ## ✏️ Personalizza il Copione
 
-Modifica `script-content.js` per adattare la presentazione:
+Modifica `src/script-content.js` per adattare la presentazione:
 
 ```javascript
 const SCRIPT = [

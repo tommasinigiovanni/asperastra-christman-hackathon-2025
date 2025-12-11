@@ -7,8 +7,8 @@ const fs = require('fs');
 const path = require('path');
 
 // Carica i file necessari
-const configCode = fs.readFileSync(path.join(__dirname, '../config.js'), 'utf8');
-const stateManagerCode = fs.readFileSync(path.join(__dirname, '../state-manager.js'), 'utf8');
+const configCode = fs.readFileSync(path.join(__dirname, '../src/config.js'), 'utf8');
+const stateManagerCode = fs.readFileSync(path.join(__dirname, '../src/state-manager.js'), 'utf8');
 
 // Valuta il codice nel contesto globale
 eval(configCode);

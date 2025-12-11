@@ -6,8 +6,8 @@ const fs = require('fs');
 const path = require('path');
 
 // Carica i file necessari
-const configCode = fs.readFileSync(path.join(__dirname, '../config.js'), 'utf8');
-const animationEngineCode = fs.readFileSync(path.join(__dirname, '../animation-engine.js'), 'utf8');
+const configCode = fs.readFileSync(path.join(__dirname, '../src/config.js'), 'utf8');
+const animationEngineCode = fs.readFileSync(path.join(__dirname, '../src/animation-engine.js'), 'utf8');
 
 eval(configCode);
 eval(animationEngineCode);

@@ -16,12 +16,12 @@ module.exports = {
     // Coverage configuration
     collectCoverage: true,
     collectCoverageFrom: [
-        '*.js',
+        'src/*.js',
         '!node_modules/**',
         '!coverage/**',
         '!dist/**',
         '!*.config.js',
-        '!main.js' // Main è più per integrazione
+        '!src/main.js' // Main è più per integrazione
     ],
     
     coverageDirectory: 'coverage',
@@ -50,4 +50,3 @@ module.exports = {
     // Test timeout
     testTimeout: 10000
 };
-
