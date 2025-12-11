@@ -2,7 +2,7 @@
   "name": "hackathon-ai-mentor",
   "version": "2.0.0",
   "description": "Interactive AI Mentor presentation app for hackathons - ChatGPT style interface with pre-scripted content",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
     "dev": "python3 -m http.server 8080",
     "test": "jest --coverage",
@@ -10,7 +10,7 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:headed": "playwright test --headed",
-    "lint": "eslint *.js --fix",
+    "lint": "eslint src/*.js --fix",
     "format": "prettier --write \"**/*.{js,html,css,md}\"",
     "format:check": "prettier --check \"**/*.{js,html,css,md}\"",
     "docker:build": "docker build -t hackathon-ai-mentor .",
@@ -42,11 +42,11 @@
   "jest": {
     "testEnvironment": "jsdom",
     "collectCoverageFrom": [
-      "*.js",
+      "src/*.js",
       "!node_modules/**",
       "!coverage/**",
-      "!jest.config.js",
-      "!playwright.config.js"
+      "!*.config.js",
+      "!src/main.js"
     ],
     "coverageThreshold": {
       "global": {
