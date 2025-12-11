@@ -167,6 +167,20 @@ const SCRIPT = [
         sound: 'applause',
         effect: 'confetti',
         notes: "Messaggio finale"
+    },
+
+    // --- SCENA 11: CONTATTI & RISORSE ---
+    {
+        role: 'user',
+        text: "Grazie AstraGPT! Come possiamo restare in contatto e dove troviamo questa presentazione?",
+        notes: "Richiesta contatti"
+    },
+    {
+        role: 'ai',
+        text: "Ecco tutti i miei riferimenti! 📬<br><br>🌐 <b>Website</b>: <a href='https://www.giovannitommasini.it/' target='_blank' style='color: #fff;'>giovannitommasini.it</a><br>💼 <b>LinkedIn</b>: <a href='https://www.linkedin.com/in/giovannitommasini/' target='_blank' style='color: #fff;'>/in/giovannitommasini</a><br>🐙 <b>GitHub</b>: <a href='https://github.com/tommasinigiovanni' target='_blank' style='color: #fff;'>@tommasinigiovanni</a><br>📧 <b>Email</b>: tommasini.giovanni@gmail.com<br><br>🎙️ <b>Podcast</b>: <i>Uno Nessuno Centomil AI</i> - su YouTube e Spotify!",
+        extraContent: "<div style='margin-top: 20px; padding: 20px; background: rgba(99, 102, 241, 0.1); border: 2px solid #6366f1; border-radius: 12px; text-align: center;'><h3 style='color: #6366f1; margin: 0 0 15px 0;'>📦 Scarica questa presentazione</h3><p style='margin: 0 0 15px 0; font-size: 0.9em;'>Scansiona il QR code o clicca per accedere al repository GitHub:</p><a href='https://github.com/tommasinigiovanni/asperastra-christman-hackathon-2025' target='_blank' style='display: block;'><img src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://github.com/tommasinigiovanni/asperastra-christman-hackathon-2025&bgcolor=1a1a2e&color=6366f1' style='border-radius: 8px; margin: 10px auto; display: block;' alt='QR Code GitHub'></a><p style='margin: 10px 0 0 0; font-family: monospace; font-size: 0.8em; word-break: break-all;'>github.com/tommasinigiovanni/asperastra-christman-hackathon-2025</p></div>",
+        effect: 'sparkle',
+        notes: "Mostrare contatti e QR code per il repository"
     }
 ];
 
